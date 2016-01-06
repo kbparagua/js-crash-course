@@ -90,6 +90,7 @@ null === undefined // false
 ### Declaration
 - with `var`
   - local variable.
+  - exists only inside the current scope.
   - Example: `var myLocalVariable = 3;`
   
 - without `var`
@@ -115,3 +116,5 @@ function bar(){
 
 console.log(foo); // ReferenceError: foo is not defined.
 ```
+
+Any local variables declared inside a function will only be accessible inside that function.

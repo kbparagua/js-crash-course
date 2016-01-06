@@ -64,10 +64,10 @@ typeof foo();                 // undefined
 ## Equality
 
 - `==`
-  - simple equality.
+  - loosely equal.
   
 - `===`
-  - strict equality.
+  - strictly equal.
   - checks if both values have the same data type.
 
 Examples:

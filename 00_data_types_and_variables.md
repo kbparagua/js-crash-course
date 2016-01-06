@@ -6,26 +6,26 @@
   - Examples: `300`, `0`, `-75`, `3.22`
 
 1. `string`
-  - Can be enclosed with single `'` or double `"` quote.
+  - Enclosed with single `'` or double `"` quotes.
   - Examples: `'Bacon'`, `"Cheese"`, `'Foo "Bar" Baz'`
 
 1. `boolean`
-  - Examples: `true`, `false`
+  - `true` or `false`.
 
-## Getting Data Type
+## Querying Data Type
 
-Use `typeof` operator to check data type of a variable or an expression. It will return a string indicating the type of the operand.
+Use `typeof` operator to get the data type of a variable or an expression. It will return a string indicating the data type of the operand.
 
 Syntax: `typeof <operand>`
 
 Examples:
 ```js
-typeof 1000;                  // number
-typeof "Hello";               // string
-typeof true;                  // boolean
+typeof 1000;    // number
+typeof "Hello"; // string
+typeof true;    // boolean
 ```
 
-## Booleans
+## Boolean
 
 Falsy values:
 - `false`
@@ -35,6 +35,15 @@ Falsy values:
 - `0`
 
 Everything else is truthy.
+
+Examples:
+```js
+if (null) alert("null");                  // will NOT alert
+if (0) alert(0);                          // will NOT alert
+
+if ("Hello World") alert("Hello World");  // will alert
+if (42) alert(42);                        // will alert
+```
 
 ## undefined
 

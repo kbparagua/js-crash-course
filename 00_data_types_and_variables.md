@@ -59,3 +59,28 @@ typeof foo();                 // undefined
 ## null
 
 `null` is an object representing null or an "emtpy" value.
+
+
+## Equality
+
+- `==`
+  - simple equality.
+  
+- `===`
+  - strict equality.
+  - checks if both values have the same data type.
+
+Examples:
+```js
+null == undefined // true
+null === undefined // false
+
+"" == false // true
+"" === false // false
+
+1 == true // true
+1 === true // false
+
+[] == false // true
+[] === false // false
+````

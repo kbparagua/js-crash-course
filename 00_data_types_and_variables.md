@@ -140,3 +140,31 @@ var foo, bar = "Hello", baz = 100;
 ```
 
 ### Hoisting
+- Variable declarations are processed before any code is executed.
+- Declaring a variable anywhere is equivalent to declaring it at the top.
+- Only the declaration will be processed on the initial reading and not the initialization or assignment part.
+
+Example:
+```js
+function foo(){
+  var a = 1;
+  // some statement here
+  var b = 2;
+  // another statement here
+  var c = 3;
+}
+```
+
+The above code will be interpreted like this:
+```js
+function foo(){
+  var a, b, c;
+  a = 1;
+  // some statement here
+  b = 2;
+  // another statement here
+  c = 3;
+}
+```
+
+[source](http://code.tutsplus.com/tutorials/javascript-hoisting-explained--net-15092)

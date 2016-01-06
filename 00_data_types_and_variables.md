@@ -97,3 +97,21 @@ null === undefined // false
   - Example: `myGlobalVariable = 5;`
 
 ### Scopes
+
+There is no block scope.
+```js
+if (x > 1){
+  var foo = "Hello";
+}
+
+console.log(foo); // Hello (foo is still accessible outside the if block)
+```
+
+Function is the only scope mechanism available.
+```js
+function bar(){
+  var foo = "Hello";
+}
+
+console.log(foo); // ReferenceError: foo is not defined.
+```

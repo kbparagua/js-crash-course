@@ -1,6 +1,8 @@
 # 00: Data Types and Variables
 
-## Basic Data Types
+## Data Types
+
+### Basic
 1. `number`
   - Integers and Decimal numbers.
   - Examples: `300`, `0`, `-75`, `3.22`
@@ -12,7 +14,7 @@
 1. `boolean`
   - `true` or `false`.
 
-## Querying Data Type
+### Querying Data Type
 
 Use `typeof` operator to get the data type of a variable or an expression. It will return a string indicating the data type of the operand.
 
@@ -25,7 +27,7 @@ typeof "Hello"; // string
 typeof true;    // boolean
 ```
 
-## Boolean
+### Boolean
 
 Falsy values:
 - `false`
@@ -45,7 +47,7 @@ if ("Hello World") alert("Hello World");  // will alert
 if (42) alert(42);                        // will alert
 ```
 
-## undefined
+### undefined
 
 - a variable that has no value assigned is of type `undefined`.
 - a function returns `undefined` if no value is returned.
@@ -65,12 +67,12 @@ function foo(){
 typeof foo();                 // undefined
 ```
 
-## null
+### null
 
 `null` is an object representing null or an "emtpy" value.
 
 
-## Equality
+### Equality
 
 - `==`
   - loosely equal.
@@ -99,7 +101,7 @@ null === undefined // false
 ### Declaration
 - with `var`
   - local variable.
-  - exists only inside the current scope.
+  - exists only within the current scope.
   - Example: `var myLocalVariable = 3;`
   
 - without `var`
@@ -126,7 +128,7 @@ function bar(){
 console.log(foo); // ReferenceError: foo is not defined.
 ```
 
-Any local variables declared inside a function will only be accessible inside that function.
+Local variables declared inside a function will only be accessible inside that function.
 
 ### Multiple Declarations
 
@@ -136,3 +138,5 @@ You can delcare multiple variables at once by separating each variable with comm
 var x = 1, y = 2, z = 3;
 var foo, bar = "Hello", baz = 100;
 ```
+
+### Hoisting

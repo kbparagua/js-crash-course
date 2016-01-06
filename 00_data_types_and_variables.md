@@ -84,3 +84,16 @@ null === undefined // false
 [] == false // true
 [] === false // false
 ````
+
+## Variables
+
+### Declaration
+- with `var`
+  - local variable.
+  - Example: `var myLocalVariable = 3;`
+  
+- without `var`
+  - global variable.
+  - Example: `myGlobalVariable = 5;`
+
+### Scopes

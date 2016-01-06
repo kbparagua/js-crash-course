@@ -118,3 +118,12 @@ console.log(foo); // ReferenceError: foo is not defined.
 ```
 
 Any local variables declared inside a function will only be accessible inside that function.
+
+### Multiple Declarations
+
+You can delcare multiple variables at once by separating each variable with comma(`,`).
+
+```js
+var x = 1, y = 2, z = 3;
+var foo, bar = "Hello", baz = 100;
+```

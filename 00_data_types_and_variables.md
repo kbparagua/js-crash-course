@@ -54,6 +54,12 @@ if (42) alert(42);                        // will alert
 Not a Number.
 - returned when a Math function failed.
 
+`NaN` is not equal to itself. Use `isNan()` to check if value is `NaN`.
+```js
+NaN == NaN // false
+isNaN(NaN) // true
+```
+
 ### undefined
 - a variable that has no value assigned is of type `undefined`.
 - a function returns `undefined` if no value is returned.

@@ -1,6 +1,6 @@
 # 01: Functions
 
-## JS Functions are First-class Citizens.
+## JS Functions are First-class Citizens
 
 *"First-Class Citizen is an entity that can be constructed at run-time, passed as a parameter, returned from a subroutine, or assigned into a variable"* [(wikipedia)](https://en.wikipedia.org/wiki/First-class_citizen)
 
@@ -37,3 +37,25 @@
   var text = prompt("What to say?");
   var sayText = new Function("alert('" + text + "');");
   ```
+
+## Hoisting
+
+Declaring a function anywhere is equivalent to declaring it at top.
+
+Example:
+```js
+foo();
+// other statements here
+function foo(){
+  alert("foo");
+}
+```
+
+The code above will be interpreted as:
+```js
+function foo(){
+  alert("foo");
+}
+foo();
+// other statements here
+```

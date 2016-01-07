@@ -50,12 +50,11 @@ if ("Hello World") alert("Hello World");  // will alert
 if (42) alert(42);                        // will alert
 ```
 
-### `NaN`
+### NaN
 Not a Number.
 - returned when a Math function failed.
 
 ### undefined
-
 - a variable that has no value assigned is of type `undefined`.
 - a function returns `undefined` if no value is returned.
 - an undeclared variable is of type `undefined`.
@@ -75,12 +74,10 @@ typeof foo();                 // undefined
 ```
 
 ### null
-
 `null` is an object representing null or an "emtpy" value.
 
 
 ### Equality
-
 - `==`
   - loosely equal.
   

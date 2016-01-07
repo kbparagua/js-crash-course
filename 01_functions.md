@@ -7,7 +7,8 @@
 - Assign to a variable.
 
   ```js
-  var sayHello = function(){ alert("Hello"); };
+  function hello(){ alert("Hello"); }
+  var sayHello = hello;
   ```
   
 - Pass as a parameter.
@@ -17,18 +18,19 @@
     myFunction();
   }
   
-  performThis(function(){ alert("Hello"); });
+  function hello(){ alert("Hello"); }
+  performThis(hello);
   ```
 
 - Return by a function.
 
   ```js
-  function createSayHello(){
-    return function(){ alert("Hello"); }
+  function getHelloFunction(){ 
+    function hello(){ alert("Hello"); }
+    return hello;
   }
   
-  var sayHello = createSayHello();
-  sayHello();
+  var sayHello = getHelloFunction();
   ```
 
 - Construct at run-time.

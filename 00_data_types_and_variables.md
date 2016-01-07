@@ -112,11 +112,21 @@ null === undefined // false
 - with `var`
   - local variable.
   - exists only within the current scope.
-  - Example: `var myLocalVariable = 3;`
+  
+  Example: 
+  ```js
+  var myVar;
+  var myLocalVariable = 3;
+  ```
   
 - without `var`
   - global variable.
-  - Example: `myGlobalVariable = 5;`
+  
+  Example:
+  ```js
+  // Only way to create global variable is by initializing its value.
+  myGlobalVariable = 5;
+  ```
 
 ### Scopes
 
@@ -134,6 +144,8 @@ Function is the only scope mechanism available.
 function bar(){
   var foo = "Hello";
 }
+
+bar();
 
 console.log(foo); // ReferenceError: foo is not defined.
 ```
@@ -176,5 +188,34 @@ function foo(){
   c = 3;
 }
 ```
+
+#### Effect of Hoisting
+
+Example:
+```js
+var myVar = 1;
+
+function foo(){
+  alert(myVar);
+  var myVar = 2;
+}
+
+foo(); // undefined will be the output of alert 
+```
+
+Interpretation (with hoisting):
+```js
+var myVar; // hoisted
+myVar = 1;
+
+function foo(){
+  var myVar; // hoisted
+  alert(myVar);
+  myVar = 2;
+}
+
+foo();
+```
+
 
 [source](http://code.tutsplus.com/tutorials/javascript-hoisting-explained--net-15092)

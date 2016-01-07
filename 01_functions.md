@@ -40,6 +40,20 @@
   var sayText = new Function("alert('" + text + "');");
   ```
 
+## Function Expressions
+
+Function expressions are just function declaration inside an expression.
+```js
+// Assigning the function hello to the variable myFunction.
+var myFunction = function hello(){ alert("Hello"); };
+```
+
+Function name can be ommited on function expressions.
+```js
+// Assigning an anonymous function to the variable myFunction.
+var myFunction = function(){ alert("Hello"); };
+```
+
 ## Hoisting
 
 Declaring a function anywhere is equivalent to declaring it at top.
@@ -61,10 +75,9 @@ function foo(){
 foo();
 ```
 
-### Function Expression
-Function expressions are not hoisted. They are treated like a regular variable declaration.
+### Function Expressions
 
-Example:
+Function expressions are not hoisted. They are treated like a regular variable declaration.
 ```js
 foo(); // ReferenceError: foo is not defined
 var foo = function(){ alert("foo"); }

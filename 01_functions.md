@@ -42,16 +42,20 @@
 
 ## Function Expressions
 
-Function expressions are just function declaration inside an expression.
+Function expressions are just function declaration used as an expression.
 ```js
 // Assigning the function hello to the variable myFunction.
 var myFunction = function hello(){ alert("Hello"); };
+
+alert(function hi(){ alert("Hi"); });
 ```
 
 Function name can be ommited on function expressions.
 ```js
 // Assigning an anonymous function to the variable myFunction.
 var myFunction = function(){ alert("Hello"); };
+
+alert(function(){ alert("Hi"); });
 ```
 
 ## Hoisting

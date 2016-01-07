@@ -14,12 +14,12 @@
 - Pass as a parameter.
 
   ```js
-  function performThis(myFunction){
+  function execute(myFunction){
     myFunction();
   }
   
   function hello(){ alert("Hello"); }
-  performThis(hello);
+  execute(hello);
   ```
 
 - Return by a function.

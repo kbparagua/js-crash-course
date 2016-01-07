@@ -4,13 +4,6 @@
 
 *"First-Class Citizen is an entity that can be constructed at run-time, passed as a parameter, returned from a subroutine, or assigned into a variable"* [(wikipedia)](https://en.wikipedia.org/wiki/First-class_citizen)
 
-- Construct at run-time.
-
-  ```js
-  var text = prompt("What to say?");
-  var sayText = new Function("alert('" + text + "');");
-  ```
-
 - Assign to a variable.
 
   ```js
@@ -36,4 +29,11 @@
   
   var sayHello = createSayHello();
   sayHello();
+  ```
+
+- Construct at run-time.
+
+  ```js
+  var text = prompt("What to say?");
+  var sayText = new Function("alert('" + text + "');");
   ```

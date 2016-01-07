@@ -30,11 +30,14 @@ typeof true;    // boolean
 ### Boolean
 
 Falsy values:
-- `false`
-- `null`
-- `undefined`
 - `""` (empty string)
+- `NaN`
 - `0`
+- `false`
+- `undefined`
+- `null`
+
+"**Empty string** is **Not a Number**. **Zero** is **FUN**"
 
 Everything else is truthy.
 

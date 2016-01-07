@@ -45,7 +45,7 @@ Declaring a function anywhere is equivalent to declaring it at top.
 Example:
 ```js
 foo();
-// other statements here
+
 function foo(){
   alert("foo");
 }
@@ -57,5 +57,20 @@ function foo(){
   alert("foo");
 }
 foo();
-// other statements here
+```
+
+### Function Expression
+Function expressions are not hoisted. They are treated like a regular variable declaration.
+
+Example:
+```js
+foo(); // ReferenceError: foo is not defined
+var foo = function(){ alert("foo"); }
+```
+
+The code above will be interpreted as:
+```js
+var foo;
+foo(); // ReferenceError: foo is not defined
+foo = function(){ alert("foo"); }
 ```

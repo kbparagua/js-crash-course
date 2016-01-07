@@ -50,6 +50,10 @@ if ("Hello World") alert("Hello World");  // will alert
 if (42) alert(42);                        // will alert
 ```
 
+### `NaN`
+Not a Number.
+- returned when a Math function failed.
+
 ### undefined
 
 - a variable that has no value assigned is of type `undefined`.

@@ -94,5 +94,43 @@ foo(); // ReferenceError: foo is not defined
 foo = function(){ alert("foo"); }
 ```
 
+## Closures
+
+A function declared inside another function has access to the local variables of the containing function.
+
+```js
+function sayName(){
+  var name = "Pedro";
+  
+  function say(){ 
+    // can access local variable of containing function `sayName`.
+    alert(name);
+  }
+  
+  say();
+}
+
+sayName(); // "Pedro"
+```
+
+The inner function is **NOT** copying the local variables of the containing function, it is just keeping references of them.
+So any changes on the referenced local variables, even after the inner function declaration, will still be reflected.
+
+```js
+function whatsMyNumber(){
+  var number = 1;
+  
+  function sayMyNumber(){ alert(number) };
+  
+  // Change the number AFTER the inner function delcaration
+  number = 2;
+  
+  sayMyNumber();
+}
+
+whatsMyNumber(); // 2
+```
+
+
 ## References
 - http://stackoverflow.com/a/111111

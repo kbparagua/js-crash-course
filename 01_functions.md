@@ -94,6 +94,38 @@ foo(); // ReferenceError: foo is not defined
 foo = function(){ alert("foo"); }
 ```
 
+## Arguments Object
+
+`arguments`
+  - an Array-like object corresponding to the arguments passed to a function.
+
+If a function is declared with no arguments, we can still pass arguments to it.
+```js
+function printItems(){
+  for (var i = 0, n = arguments.length; i < n; i++){
+    var item = arguments[i];
+    alert(item);
+  }
+}
+
+printItems("pig", "cat", "dog"); // "pig" "cat" "dog"
+```
+
+If a function is declared with less arguments, we can still pass more arguments to it.
+
+```js
+function printItems(prefix){
+  for (var i = 1, n = arguments.length; i < n; i++){
+    var item = arguments[i];
+    alert(prefix + item);
+  }
+}
+
+printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
+```
+
+
+
 ## Nested Function Declarations
 
 A function declared inside another function has a reference of the local variables of the containing function.

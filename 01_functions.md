@@ -146,24 +146,5 @@ function sayNumber(){
 sayNumber(); // 2
 ```
 
-## Closures
-
-```js
-function sayName(){
-  var name = "Pedro";
-  
-  function say(){ 
-    // has reference to the local variable of containing function.
-    alert(name);
-  }
-  
-  // Return a reference of the inner function.
-  return say;
-}
-
-var alertName = sayName();
-alertName();
-```
-
 ## References
 - http://stackoverflow.com/a/111111

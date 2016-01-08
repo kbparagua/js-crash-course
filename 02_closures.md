@@ -73,6 +73,7 @@ function foo(x){
 //  | x -> 1 |
 //  | y -> 2 |
 //  |________|
+//
 foo(1); // 3
 // env1 is destroyed after execution.
 
@@ -83,10 +84,43 @@ foo(1); // 3
 //  | x -> 5 |
 //  | y -> 2 |
 //  |________|
+//
 foo(5); // 7
 // env2 is destroyed after execution.
 ```
 
+## Nested Environments
+
+Here's an illustration of a nested environment. Since the inner environment is enclosed inside the parent environment, it can access all variables in it.
+
+```js
+function foo(x){
+  function bar(){
+    var y = 100;
+    return y + x;
+  }
+  
+  bar();
+}
+
+// 2 new environments will be created. One for `foo` and since we are also
+// executing `bar` inside, an environment will also be created for it.
+//   ___________________
+//  |(foo)env1:         |
+//  |                   |
+//  | x -> 1            |
+//  | bar -> function() |
+//  |  _______________  |
+//  | |(bar)env2:     | |
+//  | |               | |
+//  | | y -> 100      | |
+//  | |_______________| |
+//  |___________________|
+//
+foo(1);
+// env2 will be destroyed first, since bar() will end its execution first.
+// lastly, env1 will be destroyed.
+```
 
 
 ## Closure

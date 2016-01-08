@@ -94,16 +94,16 @@ foo(); // ReferenceError: foo is not defined
 foo = function(){ alert("foo"); }
 ```
 
-## Closures
+## Nested Function Declarations
 
-A function declared inside another function has access to the local variables of the containing function.
+A function declared inside another function has a reference to the local variables of the containing function.
 
 ```js
 function sayName(){
   var name = "Pedro";
   
   function say(){ 
-    // can access local variable of containing function `sayName`.
+    // has reference to the local variable of containing function.
     alert(name);
   }
   
@@ -117,18 +117,18 @@ The inner function is **NOT** copying the local variables of the containing func
 So any changes on the referenced local variables, even after the inner function declaration, will still be reflected.
 
 ```js
-function whatsMyNumber(){
+function sayNumber(){
   var number = 1;
   
-  function sayMyNumber(){ alert(number) };
+  function alertNumber(){ alert(number); };
   
   // Change the number AFTER the inner function delcaration
   number = 2;
   
-  sayMyNumber();
+  alertNumber();
 }
 
-whatsMyNumber(); // 2
+sayNumber(); // 2
 ```
 
 

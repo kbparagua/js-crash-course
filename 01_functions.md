@@ -93,3 +93,6 @@ var foo;
 foo(); // ReferenceError: foo is not defined
 foo = function(){ alert("foo"); }
 ```
+
+## References
+- http://stackoverflow.com/a/111111

@@ -57,7 +57,7 @@ sayNumber(); // 2
 
 This is just a simplification.
 
-An environment is a place where arguments and local variables are stored for each function. Whenever a function is executed a new environment is created and normally destroyed after its execution.
+An environment is a temporary place (*let's just say a box*) where arguments and local variables are stored for every executed function. It is created at the start of a function execution and normally destroyed after execution is finished.
 
 ```js
 function foo(x){

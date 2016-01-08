@@ -99,27 +99,49 @@ function foo(x){
     var y = 100;
     return y + x;
   }
+}
+
+foo(1);
+//
+//   ___________________________
+//  |(foo)env1:                 |
+//  |                           |
+//  | x -> 1                    |
+//  |                           |
+//  |         ---> (foo)env1    |
+//  | bar ---|                  |
+//  |         ---> function(){} |
+//  |___________________________|
+//
+```
+
+```js
+function foo(x){
+  function bar(){
+    var y = 100;
+    return y + x;
+  }
   
   bar();
 }
-
-// 2 new environments will be created. One for `foo` and since we are also
-// executing `bar` inside, an environment will also be created for it.
-//   ___________________
-//  |(foo)env1:         |
-//  |                   |
-//  | x -> 1            |
-//  | bar -> function() |
-//  |  _______________  |
-//  | |(bar)env2:     | |
-//  | |               | |
-//  | | y -> 100      | |
-//  | |_______________| |
-//  |___________________|
+//   ___________________________
+//  |(foo)env1:                 |
+//  |                           |
+//  | x -> 1                    |
+//  |                           |
+//  |         ---> (foo)env1    |
+//  | bar ---|                  |
+//  |         ---> function(){} |
+//  |                           |
+//  |  _______________________  |
+//  | |(bar)env2:             | |
+//  | |                       | |
+//  | | y -> 100              | |
+//  | |_______________________| |
+//  |___________________________|
+//
 //
 foo(1);
-// env2 will be destroyed first, since bar() will end its execution first.
-// lastly, env1 will be destroyed.
 ```
 
 

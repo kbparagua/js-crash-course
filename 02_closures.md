@@ -53,5 +53,42 @@ function sayNumber(){
 sayNumber(); // 2
 ```
 
+## Function Environment
+
+This is just a simplification.
+
+An environment is a place where arguments and local variables are stored for each function. Whenever a function is executed a new environment is created and then destroyed after its execution.
+
+```js
+function foo(x){
+  var y = 2;
+  return x + y;
+}
+
+//  A new environment will be created during the execution of foo(1).
+//   ________
+//  |        |
+//  | x -> 1 |
+//  | y -> 2 |
+//  |________|
+foo(1); // 3
+// environment is destroyed after execution.
+
+//  A new environment will be created during the execution of foo(5).
+//   ________
+//  |        |
+//  | x -> 5 |
+//  | y -> 2 |
+//  |________|
+foo(5); // 7
+// environment is destroyed after execution.
+```
+
+
+
+## Closure
+
+Closure is a pair of function and an environment.
+
 ## References
 - http://stackoverflow.com/a/111111

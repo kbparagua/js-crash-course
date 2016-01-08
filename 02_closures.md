@@ -91,7 +91,7 @@ foo(5); // 7
 
 ## Nested Environments
 
-Here's an illustration of a nested environment. Since the inner environment is enclosed inside the parent environment, it can access all variables in it.
+When a function is declared inside another function, the inner function will store a reference to the environemnt of the containing function.
 
 ```js
 function foo(x){
@@ -103,6 +103,8 @@ function foo(x){
 
 foo(1);
 //
+// During execution of `foo(1)`, `bar` will store references for both the inner function
+// and the current environment.
 //   ___________________________
 //  |(foo)env1:                 |
 //  |                           |
@@ -115,6 +117,8 @@ foo(1);
 //
 ```
 
+Since the inner function has a reference to the current environment, it can access the variables available on that environment when it is executed.
+
 ```js
 function foo(x){
   function bar(){
@@ -122,8 +126,10 @@ function foo(x){
     return y + x;
   }
   
+  // Execute inner function.
   bar();
 }
+// `bar()` will be executed inside the (foo)env1. Meaning, inside `bar` we can access the variable `x`.
 //   ___________________________
 //  |(foo)env1:                 |
 //  |                           |
@@ -141,7 +147,7 @@ function foo(x){
 //  |___________________________|
 //
 //
-foo(1);
+foo(1); // 101
 ```
 
 

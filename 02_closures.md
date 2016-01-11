@@ -150,13 +150,10 @@ foo(1); // 200
 
 ```js
 //
-// This will be the global environment when this function is declared.
-//  ______________________________________
-// |(global)env:                          |
-// |                                      |
-// | makeAdder -> function(){}            |
-// |______________________________________|
-
+// This is what we'll have on our global scope:
+//
+// makeAdder -> function(){}
+//
 function makeAdder(number){
   return function(x){
     return x + number;
@@ -166,46 +163,39 @@ function makeAdder(number){
 
 // This will be the environment when `var addFiveTo = makeAdder(5)` is executed.
 //
-//  ______________________________________
-// |(global)env:                          |
-// |                                      |
-// | makeAdder -> function(){}            |
-// |                                      |
-// |               ---> (makeAdder)env1   |
-// | addFiveTo ---|                       |
-// |               ---> function(){}      |
-// |  __________________________________  |
-// | |(makeAdder)env1:                  | |
-// | |                                  | |
-// | | number -> 5                      | |
-// | |__________________________________| |
-// |______________________________________|
+// makeAdder -> function(){}
+//
+//               ---> (makeAdder)env1
+// addFiveTo ---|                       
+//               ---> function(){}
+//  _______________________
+// |(makeAdder)env1:       |
+// |                       |
+// | number -> 5           |
+// |_______________________|
 //
 var addFiveTo = makeAdder(5);
 // (makeAdder)env1 will NOT be destroyed because it is still referenced by the function `addFiveTo`.
 
-//  ______________________________________
-// |(global)env:                          |
-// |                                      |
-// | makeAdder -> function(){}            |
-// |                                      |
-// |               ---> (makeAdder)env1   |
-// | addFiveTo ---|                       |
-// |               ---> function(){}      |
-// |  _________________________________   |
-// | |(makeAdder)env1:                 |  |
-// | |                                 |  |
-// | | number -> 5                     |  |
-// | |  _____________________________  |  |
-// | | |(addFiveTo)env3:             | |  |
-// | | |                             | |  |
-// | | | x -> 10                     | |  |
-// | | |_____________________________| |  |
-// | |_________________________________|  |
-// |______________________________________|
+//
+// makeAdder -> function(){}      
+//
+//               ---> (makeAdder)env1   
+// addFiveTo ---|                       
+//               ---> function(){}      
+//  _________________________________
+// |(makeAdder)env1:                 |
+// |                                 |
+// | number -> 5                     |
+// |  _____________________________  |
+// | |(addFiveTo)env2:             | |
+// | |                             | |
+// | | x -> 10                     | |
+// | |_____________________________| |
+// |_________________________________|
 //
 addFiveTo(10); // 15
-// (addFiveTo)env3 will be destroyed.
+// (addFiveTo)env2 will be destroyed.
 // (makeAdder)env1 will NOT be destroyed.
 ```
 

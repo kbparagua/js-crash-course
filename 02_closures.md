@@ -149,33 +149,45 @@ foo(1); // 200
 ## Returning A Closure
 
 ```js
+//
+// This will be the global environment when this function is declared.
+//  ______________________________________
+// |(global)env:                          |
+// |                                      |
+// | makeAdder -> function(){}            |
+// |______________________________________|
+
 function makeAdder(number){
   return function(x){
     return x + number;
   };
 }
 
+
+// This will be the environment when `var addFiveTo = makeAdder(5)` is executed.
 //
 //  ______________________________________
-// |(makeAdder)env1:                      |
+// |(global)env:                          |
 // |                                      |
-// | number -> 5                          |
-// |______________________________________|
-//
-//  ______________________________________
-// |(global)env2:                         |
+// | makeAdder -> function(){}            |
 // |                                      |
 // |               ---> (makeAdder)env1   |
 // | addFiveTo ---|                       |
 // |               ---> function(){}      |
+// |  __________________________________  |
+// | |(makeAdder)env1:                  | |
+// | |                                  | |
+// | | number -> 5                      | |
+// | |__________________________________| |
 // |______________________________________|
 //
 var addFiveTo = makeAdder(5);
-// (makeAdder)env1 will NOT be destroyed!
+// (makeAdder)env1 will NOT be destroyed because it is still referenced by the function `addFiveTo`.
 
-//
 //  ______________________________________
-// |(global)env2:                         |
+// |(global)env:                          |
+// |                                      |
+// | makeAdder -> function(){}            |
 // |                                      |
 // |               ---> (makeAdder)env1   |
 // | addFiveTo ---|                       |

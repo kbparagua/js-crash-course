@@ -109,7 +109,7 @@ foo(1); // 101
 
 ## Arguments and Variables
 
-The inner function **DOES NOT** copy the arguments and variables of the containing function. So any changes inside the containing function, even after the inner function declaration, will still be reflected.
+The inner function **DOES NOT** copy the arguments and variables of the containing function. So any changes inside the containing function, even after the inner function declaration, will still be reflected when the inner function is executed.
 
 ```js
 function foo(x){

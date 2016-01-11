@@ -149,15 +149,52 @@ foo(1); // 200
 ## Returning A Closure
 
 ```js
-function foo(x){
-  return function(){
-    var y = 100;
-    return y + x;
+function makeAdder(number){
+  return function(x){
+    return x + number;
   };
 }
 
-var baz = foo(1);
-baz();
+//
+//  ______________________________________
+// |(makeAdder)env1:                      |
+// |                                      |
+// | number -> 5                          |
+// |______________________________________|
+//
+//  ______________________________________
+// |(global)env2:                         |
+// |                                      |
+// |               ---> (makeAdder)env1   |
+// | addFiveTo ---|                       |
+// |               ---> function(){}      |
+// |______________________________________|
+//
+var addFiveTo = makeAdder(5);
+// (makeAdder)env1 will NOT be destroyed!
+
+//
+//  ______________________________________
+// |(global)env2:                         |
+// |                                      |
+// |               ---> (makeAdder)env1   |
+// | addFiveTo ---|                       |
+// |               ---> function(){}      |
+// |  _________________________________   |
+// | |(makeAdder)env1:                 |  |
+// | |                                 |  |
+// | | number -> 5                     |  |
+// | |  _____________________________  |  |
+// | | |(addFiveTo)env3:             | |  |
+// | | |                             | |  |
+// | | | x -> 10                     | |  |
+// | | |_____________________________| |  |
+// | |_________________________________|  |
+// |______________________________________|
+//
+addFiveTo(10); // 15
+// (addFiveTo)env3 will be destroyed.
+// (makeAdder)env1 will NOT be destroyed.
 ```
 
 ## References

@@ -101,9 +101,9 @@ function foo(x){
   }
 }
 
-foo(1);
 //
-// During execution of `foo(1)`, `bar` will store references for both the inner function
+// The following environment will be created when `foo(1)` is executed. 
+// Notice that `bar` will store references for both the inner function
 // and the current environment.
 //   ___________________________
 //  |(foo)env1:                 |
@@ -115,9 +115,11 @@ foo(1);
 //  |         ---> function(){} |
 //  |___________________________|
 //
+foo(1);
+// env1 will be destroyed.
 ```
 
-Since the inner function has a reference to the current environment, it can access the variables available on that environment when it is executed.
+Since the inner function has a reference to the current environment, it can access the arguments/variables available on that environment when it is executed.
 
 ```js
 function foo(x){
@@ -148,6 +150,8 @@ function foo(x){
 //
 //
 foo(1); // 101
+// env2 will be destroyed.
+// env1 will be destroyed.
 ```
 
 

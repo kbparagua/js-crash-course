@@ -146,5 +146,19 @@ foo(1); // 200
 // (foo)env1 will be destroyed.
 ```
 
+## Returning A Closure
+
+```js
+function foo(x){
+  return function(){
+    var y = 100;
+    return y + x;
+  };
+}
+
+var baz = foo(1);
+baz();
+```
+
 ## References
 - http://stackoverflow.com/a/111111

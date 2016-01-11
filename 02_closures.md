@@ -107,9 +107,44 @@ foo(1); // 101
 
 `bar` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.
 
-## Closure
+## Arguments and Variables
 
-Closure is a pair of function and an environment.
+The inner function **DOES NOT** copy the arguments and variables of the containing function. So any changes inside the containing function, even after the inner function declaration, will still be reflected.
+
+```js
+function foo(x){
+  function bar(){
+    var y = 100;
+    return y + x;
+  }
+  
+  // Change the value of `x`.
+  x = 100;
+  
+  // Execute inner function.
+  bar();
+}
+
+//   ___________________________
+//  |(foo)env1:                 |
+//  |                           |
+//  | x -> 100                  |
+//  |                           |
+//  |         ---> (foo)env1    |
+//  | bar ---|                  |
+//  |         ---> function(){} |
+//  |                           |
+//  |  _______________________  |
+//  | |(bar)env2:             | |
+//  | |                       | |
+//  | | y -> 100              | |
+//  | |_______________________| |
+//  |___________________________|
+//
+foo(1); // 200
+// (bar)env2 will be destroyed.
+// (foo)env1 will be destroyed.
+```
 
 ## References
 - http://stackoverflow.com/a/111111

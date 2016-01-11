@@ -77,7 +77,12 @@ function foo(x){
   // Execute inner function.
   bar();
 }
-// `bar()` will be executed inside the (foo)env1. Meaning, inside `bar` we can access the variable `x`.
+// Since `bar` has a reference to (foo)env1, when it is executed, 
+// it will create a new environment, (bar)env2, inside (foo)env1.
+// It is an environment within another environment (a box inside another box).
+//
+// Because of that structure, (bar)env2 will have access to the arguments 
+// and variables inside (foo)env1.
 //   ___________________________
 //  |(foo)env1:                 |
 //  |                           |

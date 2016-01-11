@@ -105,6 +105,7 @@ foo(1); // 101
 // env1 will be destroyed.
 ```
 
+`bar` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.
 
 ## Closure
 

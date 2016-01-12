@@ -126,35 +126,51 @@ printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 
 ## Immediately-Invoked Function Expression (IIFE)
 
+Since the only way to limit the scope of variables is by enclosing them in a function, we often create a function that is NOT intended for re-use, but just a way to hide variables.
+
 ```js
-// Function declaration.
-var foo = function(){
-  var text = "Hello";
-  alert(text);
+var init = function(){
+  var name = "Bruce Lee";
+  var greeting = "Welcome";
+  
+  var message = greeting + ' ' + name + '!';
+  alert(message);
 };
 
-// Function execution.
-foo();
+init(); // Welcome Bruce Lee!
 
-alert(text); // ReferenceError: text is not defined.
+// name, greeting, and message is unavailable at this part of the code.
+alert(name); // ReferenceError: name is not defined.
 ``` 
 
-```js
-// Function declaration and execution
-(function foo(){ 
-  var text = "Hello";
-  alert(text);
-})();
+Since the `init` function is not intended to be re-used again, sometimes it is better to just execute it immediately after it is created.
 
-alert(text); // ReferenceError: text is not defined.
+```js
+// Create and execute function.
+(function init(){ 
+  var name = "Bruce Lee";
+  var greeting = "Welcome";
+  
+  var message = greeting + ' ' + name + '!';
+  alert(message);
+})(); // Welcome Bruce Lee!
+
+// name, greeting, and message is unavailable at this part of the code.
+alert(name); // ReferenceError: name is not defined.
 ```
 
-```js
-// Anonymous function and execution
-(function(){ 
-  var text = "Hello";
-  alert(text);
-})();
+Ideally, we can also remove the function name since we don't really need to call that function again.
 
-alert(text); // ReferenceError: text is not defined.
+```js
+// Create and execute function.
+(function(){ 
+  var name = "Bruce Lee";
+  var greeting = "Welcome";
+  
+  var message = greeting + ' ' + name + '!';
+  alert(message);
+})(); // Welcome Bruce Lee!
+
+// name, greeting, and message is unavailable at this part of the code.
+alert(name); // ReferenceError: name is not defined.
 ```

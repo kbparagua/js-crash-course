@@ -113,38 +113,37 @@ container(1); // 101
 The inner function **DOES NOT** copy the arguments and variables of the containing function. So any changes inside the containing function, even after the inner function declaration, will still be reflected when the inner function is executed.
 
 ```js
-function foo(x){
-  function bar(){
+function container(x){
+  function inside(){
     var y = 100;
-    return y + x;
+    return x + y;
   }
   
-  // Change the value of `x`.
   x = 100;
   
   // Execute inner function.
-  bar();
+  inside();
 }
 
-//   ___________________________
-//  |(foo)env1:                 |
-//  |                           |
-//  | x -> 100                  |
-//  |                           |
-//  |         ---> (foo)env1    |
-//  | bar ---|                  |
-//  |         ---> function(){} |
-//  |                           |
-//  |  _______________________  |
-//  | |(bar)env2:             | |
-//  | |                       | |
-//  | | y -> 100              | |
-//  | |_______________________| |
-//  |___________________________|
+//   _________________________________
+//  |(container)env1:                 |
+//  |                                 |
+//  | x -> 100                        |
+//  |                                 | 
+//  |         ---> (container)env1    |
+//  | inside ---|                     |
+//  |         ---> function(){}       |
+//  |                                 |
+//  |   _________________________     |
+//  |  |(inside)env2:            |    |
+//  |  |                         |    |
+//  |  | y -> 100                |    |
+//  |  |_________________________|    |
+//  |_________________________________|
 //
-foo(1); // 200
-// (bar)env2 will be destroyed.
-// (foo)env1 will be destroyed.
+container(1); // 200
+// (inside)env2 will be destroyed.
+// (container)env1 will be destroyed.
 ```
 
 ## Returning A Closure

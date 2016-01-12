@@ -14,6 +14,15 @@ Keys are automatically converted to strings, so we can ommit the quotes around t
 var bruce = {firstname: "Bruce", lastname: "Lee"};
 ```
 
+If a non-string key is provided, such as a number or a boolean, it will be typecasted to string.
+
+```js
+var object = {false: "false value", 100: "one hundred"};
+
+// The object above is equivalent to this object:
+{"false": "false value", "100": "one hundred"};
+```
+
 Property values can be any expressions.
 
 ```js

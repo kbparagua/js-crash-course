@@ -94,36 +94,6 @@ foo(); // ReferenceError: foo is not defined
 foo = function(){ alert("foo"); }
 ```
 
-## Arguments Object
-
-`arguments`
-  - an Array-like object corresponding to the arguments passed to a function.
-
-If a function is declared with no arguments, we can still pass arguments to it.
-```js
-function printItems(){
-  for (var i = 0, n = arguments.length; i < n; i++){
-    var item = arguments[i];
-    alert(item);
-  }
-}
-
-printItems("pig", "cat", "dog"); // "pig" "cat" "dog"
-```
-
-If a function is declared with less arguments, we can still pass more arguments to it.
-
-```js
-function printItems(prefix){
-  for (var i = 1, n = arguments.length; i < n; i++){
-    var item = arguments[i];
-    alert(prefix + item);
-  }
-}
-
-printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
-```
-
 ## Immediately-Invoked Function Expression (IIFE)
 
 Since the only way to limit the scope of variables is by enclosing them in a function, we often create a function that is NOT intended for re-use, but just a way to hide variables.
@@ -173,4 +143,34 @@ Ideally, we can also remove the function name since we don't really need to call
 
 // name, greeting, and message is unavailable at this part of the code.
 alert(name); // ReferenceError: name is not defined.
+```
+
+## Arguments Object
+
+`arguments`
+  - an Array-like object corresponding to the arguments passed to a function.
+
+If a function is declared with no arguments, we can still pass arguments to it.
+```js
+function printItems(){
+  for (var i = 0, n = arguments.length; i < n; i++){
+    var item = arguments[i];
+    alert(item);
+  }
+}
+
+printItems("pig", "cat", "dog"); // "pig" "cat" "dog"
+```
+
+If a function is declared with less arguments, we can still pass more arguments to it.
+
+```js
+function printItems(prefix){
+  for (var i = 1, n = arguments.length; i < n; i++){
+    var item = arguments[i];
+    alert(prefix + item);
+  }
+}
+
+printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 ```

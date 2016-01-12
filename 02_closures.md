@@ -2,9 +2,9 @@
 
 ## Function Environment
 
-This is just a simplification.
+For the sake of simplicity, let's use the following definition.
 
-An environment is a temporary place (*let's just say a box*) where arguments and local variables are stored when a function is executed. It is created at the start of the execution and normally destroyed after execution is finished.
+An environment is a temporary place (*let's just say a box*) where arguments and local variables are stored when a function is executed. It is created at the start of the execution and *normally destroyed after execution is finished*.
 
 ```js
 function foo(x){
@@ -13,26 +13,26 @@ function foo(x){
 }
 
 //  A new environment will be created during the execution of foo(1).
-//   ________
-//  |env1:   |
-//  |        |
-//  | x -> 1 |
-//  | y -> 2 |
-//  |________|
+//   _____________
+//  |(foo)env1:   |
+//  |             |
+//  | x -> 1      |
+//  | y -> 2      | 
+//  |_____________|
 //
 foo(1); // 3
-// env1 will be destroyed.
+// (foo)env1 will be destroyed.
 
 //  A new environment will be created during the execution of foo(5).
-//   ________
-//  |env2:   |
-//  |        |
-//  | x -> 5 |
-//  | y -> 2 |
-//  |________|
+//   _____________
+//  |(foo)env2:   |
+//  |             |
+//  | x -> 5      |
+//  | y -> 2      |
+//  |_____________|
 //
 foo(5); // 7
-// env2 will be destroyed.
+// (foo)env2 will be destroyed.
 ```
 
 ## Nested Environments
@@ -40,72 +40,73 @@ foo(5); // 7
 When a function is declared inside another function, the inner function will store a reference to the environemnt of the containing function.
 
 ```js
-function foo(x){
-  function bar(){
+function container(x){
+  function inside(){
     var y = 100;
-    return y + x;
+    return x + y;
   }
 }
 
 //
-// The following environment will be created when `foo(1)` is executed. 
-// Notice that `bar` will store references for both the inner function
+// The following environment will be created when `container(1)` is executed. 
+// Notice that `inside` will store references for both the inner function
 // and the current environment.
-//   ___________________________
-//  |(foo)env1:                 |
-//  |                           |
-//  | x -> 1                    |
-//  |                           |
-//  |         ---> (foo)env1    |
-//  | bar ---|                  |
-//  |         ---> function(){} |
-//  |___________________________|
+//   _________________________________
+//  |(container)env1:                 |
+//  |                                 |
+//  | x -> 1                          |
+//  |                                 |
+//  |            ---> (container)env1 |
+//  | inside ---|                     |
+//  |            ---> function(){}    |
+//  |_________________________________|
 //
-foo(1);
-// env1 will be destroyed.
+container(1);
+// (container)env1 will be destroyed.
 ```
 
 Since the inner function has a reference to the current environment, it can access the arguments/variables available on that environment when it is executed.
 
 ```js
-function foo(x){
-  function bar(){
+function container(x){
+  function inside(){
     var y = 100;
-    return y + x;
+    return x + y;
   }
   
   // Execute inner function.
-  bar();
+  inside();
 }
-// Since `bar` has a reference to (foo)env1, when it is executed, 
-// it will create a new environment, (bar)env2, inside (foo)env1.
+
+// Since `inside` has a reference to (container)env1, when it is executed, 
+// it will create a new environment, (inside)env2, within (container)env1.
 // It is an environment within another environment (a box inside another box).
 //
-// Because of that structure, (bar)env2 will have access to the arguments 
-// and variables inside (foo)env1.
-//   ___________________________
-//  |(foo)env1:                 |
-//  |                           |
-//  | x -> 1                    |
-//  |                           |
-//  |         ---> (foo)env1    |
-//  | bar ---|                  |
-//  |         ---> function(){} |
-//  |                           |
-//  |  _______________________  |
-//  | |(bar)env2:             | |
-//  | |                       | |
-//  | | y -> 100              | |
-//  | |_______________________| |
-//  |___________________________|
+// Because of that structure, (inside)env2 will have access to the arguments 
+// and variables of (container)env1.
+//   _________________________________
+//  |(container)env1:                 |
+//  |                                 |
+//  | x -> 1                          |
+//  |                                 |
+//  |            ---> (container)env1 |
+//  | inside ---|                     |
+//  |            ---> function(){}    |
+//  |                                 |
+//  |   __________________________    |
+//  |  |(inside)env2:             |   |
+//  |  |                          |   |
+//  |  | y -> 100                 |   |
+//  |  |__________________________|   |
+//  |_________________________________|
 //
 //
-foo(1); // 101
-// env2 will be destroyed.
-// env1 will be destroyed.
+container(1); // 101
+// (inside)env2 will be destroyed.
+// (container)env1 will be destroyed.
 ```
 
-`bar` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.
+`inside` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.
 
 ## Arguments and Variables
 

@@ -5,24 +5,25 @@
 Object is a collection of properties, wherein each property is composed of a key-value pair.
 
 ```js
-var myObject = {"key1": "value01", "key2": "value02"};
+var bruce = {"firstname": "Bruce", "lastname": "Lee"};
 ```
 
-Keys are automatically converted to strings, so you ommit the quotes around the keys.
+Keys are automatically converted to strings, so we can ommit the quotes around the keys.
 
 ```js
-var myObject = {key1: "value01", key2: "value02"};
+var bruce = {firstname: "Bruce", lastname: "Lee"};
 ```
 
 Property values can be any expressions.
 
 ```js
-var myObject = {
-  key1: "hello",
-  key2: 1,
-  key3: false,
-  key4: function(){ alert("hi"); },
-  key5: {key1: 1, key2: 2}
+var bruce = {
+  firstname: "Bruce",
+  lastname: "Lee",
+  age: 75,
+  alive: false,
+  family: {wife: "Linda", son: "Brandon", daughter: "Shannon"},
+  kick: function(){ alert("watta!"); }
 };
 ```
 

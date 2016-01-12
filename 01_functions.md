@@ -127,12 +127,34 @@ printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 ## Immediately-Invoked Function Expression (IIFE)
 
 ```js
-function fx(){
-  alert("Hello");
-}
-fx();
+// Function declaration.
+var foo = function(){
+  var text = "Hello";
+  alert(text);
+};
 
-(function(){ 
-  alert("Hello"); 
+// Function execution.
+foo();
+
+alert(text); // ReferenceError: text is not defined.
+``` 
+
+```js
+// Function declaration and execution
+(function foo(){ 
+  var text = "Hello";
+  alert(text);
 })();
+
+alert(text); // ReferenceError: text is not defined.
+```
+
+```js
+// Anonymous function and execution
+(function(){ 
+  var text = "Hello";
+  alert(text);
+})();
+
+alert(text); // ReferenceError: text is not defined.
 ```

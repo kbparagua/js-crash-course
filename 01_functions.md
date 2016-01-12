@@ -123,3 +123,16 @@ function printItems(prefix){
 
 printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 ```
+
+## Immediately-Invoked Function Expression (IIFE)
+
+```js
+function fx(){
+  alert("Hello");
+}
+fx();
+
+(function(){ 
+  alert("Hello"); 
+})();
+```

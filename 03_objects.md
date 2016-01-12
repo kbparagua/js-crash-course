@@ -81,24 +81,3 @@ myObject[100] = "Hello World";
 
 alert(myObject.100); // Syntax Error
 ```
-
-## Accessing Properties
-
-1. Dot operator - `.`
-  
-  - Access property ONLY with string keys.
-
-  ```js
-  var myObject = {key1: "value01", key2: "value02"};
-  
-  // Access the property with the a string key equal to "key1"
-  alert(myObject.key1);
-  ```
-
-2. Bracket notation - `[]`
-
-  - Access property with the specified key.
-  
-  ```js
-  var myObject = {key1: "value01", };
-  ```

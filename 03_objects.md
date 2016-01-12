@@ -27,58 +27,22 @@ var bruce = {
 };
 ```
 
-As you can see, we can even use another object as a property value. Basically, anything can be assigned to a variable can also be a property value.
+As you can see, we can even use another object as a property value. Basically, anything that can be assigned to a variable can also be a property value.
 
 ## Accessing Properties
 
 We use the dot operator (`.`) to access properties. 
 
 ```js
-var myObject = {key1: "value01", key2: "value02"};
-
-// Get the value of the property with a string key equal to "key1".
-alert(myObject.key1); // "value01"
+alert(bruce.lastname); // "Lee"
 ```
 
 Use the same operator to manipulate or add properties.
 
 ```js
-var myObject = {key1: "value01", key2: "value02"};
+// Change property value.
+bruce.age = 76;
 
-// Change key1's value.
-myObject.key1 = "new value";
-
-// Add a new property.
-myObject.key3 = "new property";
-```
-
-
-## Non-String Keys
-
-Non-string keys cannot be used directly when creating an object literal. 
-
-```js
-// This will NOT create a property with the number 100 as a key.
-//
-// This will be the object that will be created: {"100": "my value"}
-var myObject = {100: "my value"};
-```
-
-Bracket notation must be used instead of the dot operator to add properties with non-string keys.
-
-```js
-// Create an empty object first.
-var myObject = {};
-
-// Create a property with the number 100 as the key.
-myObject[100] = "my value";
-```
-
-Dot operator will always look for string keys. Make sure to use the bracket notation when dealing with non-string keys.
-
-```js
-var myObject = {};
-myObject[100] = "Hello World";
-
-alert(myObject.100); // Syntax Error
+// Add new property.
+bruce.lastMovie = "Game of Death";
 ```

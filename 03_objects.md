@@ -86,3 +86,15 @@ var obj = {"4x4": "Four by Four"};
 alert(obj["4x4"]); // "Four by Four"
 ```
 
+### Accessing Property with Variable
+
+Use Bracket notation to access a property using a variable.
+
+```js
+var obj = {foo: "Foo", bar: "Bar"};
+var key = "bar";
+
+alert(obj.key); // undefined
+alert(obj[key]); // "Bar"
+
+```

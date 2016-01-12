@@ -148,6 +148,10 @@ container(1); // 200
 
 ## Returning A Closure
 
+Normally, when an inner function is created, it will not be executed yet, rather it will be returned by the containing function. This is the usual use of closures.
+
+In the example below, instead of executing the inner function instantly, we are just going to return a reference to an anonymous function.
+
 ```js
 //
 //  Global scope:

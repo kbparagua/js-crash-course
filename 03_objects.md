@@ -8,7 +8,7 @@ Object is a collection of properties, wherein each property is composed of a key
 var myObject = {"key1": "value01", "key2": "value02"};
 ```
 
-Keys are automatically converted to strings, so you can just create keys like this:
+Keys are automatically converted to strings, so you ommit the quotes around the keys.
 
 ```js
 var myObject = {key1: "value01", key2: "value02"};
@@ -26,7 +26,7 @@ var myObject = {
 };
 ```
 
-As you can see, we can even use another object as a property value.
+As you can see, we can even use another object as a property value. Basically, anything can be assigned to a variable can be also be a property value.
 
 ## Accessing Properties
 
@@ -35,7 +35,7 @@ We use the dot operator (`.`) to access properties.
 ```js
 var myObject = {key1: "value01", key2: "value02"};
 
-// Get the value of the property with the string key equal to "key1".
+// Get the value of the property with a string key equal to "key1".
 alert(myObject.key1); // "value01"
 ```
 
@@ -52,17 +52,34 @@ myObject.key3 = "new property";
 ```
 
 
-
 ## Non-String Keys
 
-To use non-string keys, we need to use the bracket notation to create a property.
+Non-string keys cannot be used directly when creating an object literal. 
+
+```js
+// This will NOT create a property with the number 100 as a key.
+//
+// This will be the object that will be created: {"100": "my value"}
+var myObject = {100: "my value"};
+```
+
+Bracket notation must be used instead of the dot operator to add properties with non-string keys.
 
 ```js
 // Create an empty object first.
 var myObject = {};
 
 // Create a property with the number 100 as the key.
-myObject[100] = "Hello";
+myObject[100] = "my value";
+```
+
+Dot operator will always look for string keys. Make sure to use the bracket notation when dealing with non-string keys.
+
+```js
+var myObject = {};
+myObject[100] = "Hello World";
+
+alert(myObject.100); // Syntax Error
 ```
 
 ## Accessing Properties

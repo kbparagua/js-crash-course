@@ -130,9 +130,9 @@ function container(x){
 //  |                                 |
 //  | x -> 100                        |
 //  |                                 | 
-//  |         ---> (container)env1    |
+//  |            ---> (container)env1 |
 //  | inside ---|                     |
-//  |         ---> function(){}       |
+//  |            ---> function(){}    |
 //  |                                 |
 //  |   _________________________     |
 //  |  |(inside)env2:            |    |

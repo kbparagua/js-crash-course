@@ -69,3 +69,20 @@ bruce.age = 76;
 // Add new property.
 bruce.lastMovie = "Game of Death";
 ```
+
+### Irregular Keys
+
+Dot operator can only access properties with keys that are valid identifier name.
+
+```js
+var obj = {"4x4": "Four by Four"};
+alert(obj.4x4) // Syntax Error
+```
+
+Use Bracket notation (`[]`) to access irregular keys.
+
+```js
+var obj = {"4x4": "Four by Four"};
+alert(obj["4x4"]); // "Four by Four"
+```
+

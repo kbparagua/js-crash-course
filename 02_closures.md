@@ -150,7 +150,24 @@ container(1); // 200
 
 Normally, when an inner function is created, it will not be executed yet, rather it will be returned by the containing function. This is the usual use of closures.
 
-In the example below, instead of executing the inner function instantly, we are just going to return a reference to an anonymous function.
+In the example below, instead of executing the inner function instantly, we are just going to return a reference to the inner function.
+
+```js
+//
+//  Global scope:
+//
+//  makeAdder -> function(){}
+//
+function makeAdder(number){
+  function adder(x){
+    return x + number;
+  }
+  
+  return adder;
+}
+```
+
+Or we can just return an anonymous function expression.
 
 ```js
 //
@@ -163,8 +180,11 @@ function makeAdder(number){
     return x + number;
   };
 }
+```
 
+This is how we'll use the `makeAdder` function.
 
+```js
 //
 //  Global scope:
 //

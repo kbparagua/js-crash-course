@@ -8,6 +8,8 @@ Object is a collection of properties, wherein each property is composed of a key
 var bruce = {"firstname": "Bruce", "lastname": "Lee"};
 ```
 
+### Keys
+
 Keys are automatically converted to strings, so we can ommit the quotes around the keys.
 
 ```js
@@ -22,6 +24,8 @@ var object = {false: "false value", 100: "one hundred"};
 // The object above is equivalent to this object:
 {"false": "false value", "100": "one hundred"};
 ```
+
+### Values
 
 Property values can be any expressions.
 

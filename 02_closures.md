@@ -150,9 +150,9 @@ container(1); // 200
 
 ```js
 //
-// This is what we'll have on our global scope:
+//  Global scope:
 //
-// makeAdder -> function(){}
+//  makeAdder -> function(){}
 //
 function makeAdder(number){
   return function(x){
@@ -161,43 +161,47 @@ function makeAdder(number){
 }
 
 
-// This will be the environment when `var addFiveTo = makeAdder(5)` is executed.
 //
-// makeAdder -> function(){}
+//  Global scope:
 //
-//               ---> (makeAdder)env1
-// addFiveTo ---|                       
-//               ---> function(){}
-//  _______________________
-// |(makeAdder)env1:       |
-// |                       |
-// | number -> 5           |
-// |_______________________|
+//  makeAdder -> function(){}
+//
+//                ---> (makeAdder)env1
+//  addFiveTo ---|                       
+//                ---> function(){}
+//   _______________________
+//  |(makeAdder)env1:       |
+//  |                       |
+//  | number -> 5           |
+//  |_______________________|
 //
 var addFiveTo = makeAdder(5);
 // (makeAdder)env1 will NOT be destroyed because it is still referenced by the function `addFiveTo`.
 
 //
-// makeAdder -> function(){}      
+//  Global scope:
+//  makeAdder -> function(){}      
 //
-//               ---> (makeAdder)env1   
-// addFiveTo ---|                       
-//               ---> function(){}      
-//  _________________________________
-// |(makeAdder)env1:                 |
-// |                                 |
-// | number -> 5                     |
-// |  _____________________________  |
-// | |(addFiveTo)env2:             | |
-// | |                             | |
-// | | x -> 10                     | |
-// | |_____________________________| |
-// |_________________________________|
+//                ---> (makeAdder)env1   
+//  addFiveTo ---|                       
+//                ---> function(){}      
+//   _________________________________
+//  |(makeAdder)env1:                 |
+//  |                                 |
+//  | number -> 5                     |
+//  |   ___________________________   |
+//  |  |(addFiveTo)env2:           |  |
+//  |  |                           |  |
+//  |  | x -> 10                   |  |
+//  |  |___________________________|  |
+//  |_________________________________|
 //
 addFiveTo(10); // 15
 // (addFiveTo)env2 will be destroyed.
-// (makeAdder)env1 will NOT be destroyed.
+// (makeAdder)env1 will NOT be destroyed!
 ```
+
+Notice that the environment of the containing function is never destroyed. This is because it is still used by the closure `addFiveTo`.
 
 ## References
 - http://stackoverflow.com/a/111111

@@ -26,7 +26,7 @@ var myObject = {
 };
 ```
 
-As you can see, we can even use another object as a property value. Basically, anything can be assigned to a variable can be also be a property value.
+As you can see, we can even use another object as a property value. Basically, anything can be assigned to a variable can also be a property value.
 
 ## Accessing Properties
 

@@ -227,5 +227,25 @@ addFiveTo(10); // 15
 
 Notice that the environment of the containing function is never destroyed. This is because it is still used by the closure `addFiveTo`.
 
+## Exercise
+
+Re-write the function `initAdders` to achieve the correct behavior.
+
+```js
+var adders = [];
+
+function initAdders(){
+  for (var factor = 1; factor <= 5; factor++){
+  	var addFactorTo = function(number){ return number + factor; }
+		adders[factor] = addFactorTo;
+	}
+}
+
+initAdders();
+
+var addOneTo = adders[1];
+console.log( addOneTo(3) ); // 9
+```
+
 ## References
 - http://stackoverflow.com/a/111111

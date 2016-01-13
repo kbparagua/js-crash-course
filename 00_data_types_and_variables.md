@@ -3,6 +3,7 @@
 ## Data Types
 
 ### Basic
+
 1. `number`
   - Integers and Decimal numbers.
   - Examples: `300`, `0`, `-75`, `3.22`
@@ -52,7 +53,7 @@ if (42) alert(42);                        // will alert
 
 ### NaN
 Not a Number.
-- returned when a Math function failed.
+- returned when a Math function or operation failed.
 
 `NaN` is not equal to itself. Use `isNan()` to check if value is `NaN`.
 ```js
@@ -82,6 +83,10 @@ typeof foo();                 // undefined
 ### null
 `null` is an object representing null or an "emtpy" value.
 
+```js
+var emptyVariable = null;
+```
+
 
 ### Equality
 - `==`
@@ -107,6 +112,22 @@ null === undefined // false
 ````
 
 ## Variables
+
+### Name
+
+- should start with a letter, underscore (`_`), or dollar sign (`$`).
+- can have numbers in it.
+- should not include spaces.
+
+```js
+var foo; // valid
+var _myVariable; // valid
+var $document; // valid
+var ie8; // valid
+
+var 7lastWords; // invalid
+var my variable; // invalid
+```
 
 ### Declaration
 - with `var`

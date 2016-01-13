@@ -173,3 +173,24 @@ window.myGlobal = "Global Variable";
 alert(myGlobal); // "Global Variable"
 alert(window.myGlobal); // "Global Variable"
 ```
+
+A function in the global scope is considered as a method of the global object.
+```js
+function foo(){};
+
+// The statement above is interpreted as:
+window.foo = function(){};
+```
+
+Any function **NOT** invoked by any object is considered to be invoked by the global object. Meaning, the value of `this` will be the global object, if a method is not invoked by any object.
+
+```js
+function foo(){
+  console.log(this);
+}
+
+foo(); // window
+
+// Just the same as:
+window.foo();
+```

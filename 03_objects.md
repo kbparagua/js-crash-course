@@ -119,3 +119,17 @@ var obj = {"100": "One Hundred"};
 
 alert(obj[50 + 50]); // "One Hundred"
 ```
+
+## Methods
+
+Method is just a name used as a convention to refer to aproperty that has a function as its value.
+Basically, method is a property that can be invoked.
+
+```js
+var obj = {
+  myMethod: function(){ alert("I am a method!"); }
+};
+
+// Invoke method.
+obj.myMethod(); // "I am a method!"
+``

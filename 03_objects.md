@@ -160,3 +160,16 @@ patrick.sayHi(); // "Hi! I am Patrick Star"
 
 ## The Global Object
 
+In browser's context, the global object is called `window`.
+Everything declared in the global scope will automatically be a property of `window`.
+
+```js
+var myGlobal = "Global Variable";
+
+// The statement above is interpreted as:
+window.myGlobal = "Global Variable";
+
+// Both will work:
+alert(myGlobal); // "Global Variable"
+alert(window.myGlobal); // "Global Variable"
+```

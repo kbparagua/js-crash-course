@@ -1,41 +1,38 @@
 # 04: Objects
 
-## Creating Basic Object
-
-Object is a collection of properties, wherein each property is composed of a key-value pair.
+An Object is a collection of properties, wherein each property is composed of a key-value pair.
 
 ```js
 var bruce = {"firstname": "Bruce", "lastname": "Lee"};
 ```
 
-### Keys
+## Keys
 
-Keys are automatically converted to strings, so we can ommit the quotes around the keys.
+Property key, also referred as property name, is automatically converted to string. So quotes can be ommited when writing property names.
 
 ```js
 var bruce = {firstname: "Bruce", lastname: "Lee"};
 ```
 
-If quotes are ommited, a key should be a valid identifier name.
+Using this format, property name should be a valid indentifier name.
 
 ```js
-// This will not work.
+// Will not work
 var obj = {4x4: "four by four"}; // Syntax Error
 
-// Must enclose with quotes.
+// Must enclose with quotes to work.
 var obj = {"4x4": "four by four"};
 ```
 
 If a non-string key is provided, such as a number or a boolean, it will be typecasted to string.
 
 ```js
+// typecasted to:
+//  {"false": "false value", "100": "one hundred"}
 var object = {false: "false value", 100: "one hundred"};
-
-// The object above is equivalent to this object:
-{"false": "false value", "100": "one hundred"};
 ```
 
-### Values
+## Values
 
 Property values can be any expressions.
 
@@ -50,24 +47,27 @@ var bruce = {
 };
 ```
 
-As you can see, we can even use another object as a property value. Basically, anything that can be assigned to a variable can also be a property value.
+Basically, anything that can be assigned to a variable can also be a property value.
 
 ## Accessing Properties
 
 We use the dot operator (`.`) to access properties. 
 
 ```js
+var bruce = {firstname: "Bruce", lastname: "Lee"};
 alert(bruce.lastname); // "Lee"
 ```
 
 Use the same operator to manipulate or add properties.
 
 ```js
+var bruce = {firstname: "Bruce", lastname: "Lee"};
+
 // Change property value.
-bruce.age = 76;
+bruce.lastname = "Wayne";
 
 // Add new property.
-bruce.lastMovie = "Game of Death";
+bruce.nickname = "Batman";
 ```
 
 ### Irregular Keys
@@ -86,9 +86,9 @@ var obj = {"4x4": "Four by Four"};
 alert(obj["4x4"]); // "Four by Four"
 ```
 
-### Using Expression to Access Property
+### Bracket Notation
 
-Use Bracket notation to access a property using a variable or any expressions.
+Generally, bracket notation (`[]`) is used to access keys using a variable or any expression.
 
 ```js
 var obj = {
@@ -116,7 +116,6 @@ If the passed expression does not result to a string, it will be typecasted to a
 
 ```js
 var obj = {"100": "One Hundred"};
-
 alert(obj[50 + 50]); // "One Hundred"
 ```
 

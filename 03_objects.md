@@ -175,10 +175,10 @@ alert(window.myGlobal); // "Global Variable"
 ```
 
 A function in the global scope is considered as a method of the global object.
-```js
-function foo(){};
 
-// The statement above is interpreted as:
+```js
+// Both statements will achieve the same result:
+function foo(){};
 window.foo = function(){};
 ```
 
@@ -189,8 +189,7 @@ function foo(){
   console.log(this);
 }
 
+// Both statements will have the same output.
 foo(); // window
-
-// Just the same as:
-window.foo();
+window.foo(); // window
 ```

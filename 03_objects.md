@@ -132,4 +132,28 @@ var obj = {
 
 // Invoke method.
 obj.myMethod(); // "I am a method!"
-``
+```
+
+### This Object
+
+`this` is a special variable available inside a method, that refers to the object that invoked it.
+
+```js
+var spongebob = {
+  name: "Spongebob Squarepants",
+  sayHi: function(){
+    alert("Hi! I am " + this.name);
+  };
+};
+
+spongebob.sayHi(); // "Hi! I am Spongebob Squarepants"
+```
+
+The value of `this` is evaluated at run-time, so it will always be equal to the object invoked the method.
+
+```js
+var patrick = {name: "Patrick Star"};
+patrick.sayHi = spongebob.sayHi;
+
+patrick.sayHi(); // "Hi! I am Patrick Star"
+```

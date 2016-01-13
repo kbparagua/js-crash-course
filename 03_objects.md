@@ -93,17 +93,16 @@ Use Bracket notation to access a property using a variable or any expressions.
 ```js
 var obj = {
   foo: "Foo", 
-  bar: "Bar", 
-  "100": "One Hundred"
+  bar: "Bar"
 };
 
 var key = "bar";
 
+// Do not use dot operator!
 alert(obj.key); // undefined
 
 // Use bracket notation to access using variable/expression
 alert(obj[key]); // "Bar"
-alert(obj[50 + 50]); // "One Hundred"
 
 // Formatted for readability.
 alert(
@@ -111,4 +110,12 @@ alert(
     (function(){ return "foo"; })()
   ];
 ); // "Foo"
+```
+
+If the passed expression does not result to a string, it will be typecasted to a string.
+
+```js
+var obj = {"100": "One Hundred"};
+
+alert(obj[50 + 50]); // "One Hundred"
 ```

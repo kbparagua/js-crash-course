@@ -72,7 +72,7 @@ bruce.lastMovie = "Game of Death";
 
 ### Irregular Keys
 
-Dot operator can only access properties with keys that are valid identifier name.
+Dot operator can only access properties with keys that qualify as valid identifier name.
 
 ```js
 var obj = {"4x4": "Four by Four"};
@@ -86,15 +86,29 @@ var obj = {"4x4": "Four by Four"};
 alert(obj["4x4"]); // "Four by Four"
 ```
 
-### Accessing Property with Variable
+### Using Expression to Access Property
 
-Use Bracket notation to access a property using a variable.
+Use Bracket notation to access a property using a variable or any expressions.
 
 ```js
-var obj = {foo: "Foo", bar: "Bar"};
+var obj = {
+  foo: "Foo", 
+  bar: "Bar", 
+  "100": "One Hundred"
+};
+
 var key = "bar";
 
 alert(obj.key); // undefined
-alert(obj[key]); // "Bar"
 
+// Use bracket notation to access using variable/expression
+alert(obj[key]); // "Bar"
+alert(obj[50 + 50]); // "One Hundred"
+
+// Formatted for readability.
+alert(
+  obj[
+    (function(){ return "foo"; })()
+  ];
+); // "Foo"
 ```

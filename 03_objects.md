@@ -122,8 +122,8 @@ alert(obj[50 + 50]); // "One Hundred"
 
 ## Methods
 
-Method is just a name used as a convention to refer to aproperty that has a function as its value.
-Basically, method is a property that can be invoked.
+Method is just a name used as a convention to refer to a property that has a function as its value.
+Basically, a method is a property that can be invoked.
 
 ```js
 var obj = {
@@ -157,3 +157,6 @@ patrick.sayHi = spongebob.sayHi;
 
 patrick.sayHi(); // "Hi! I am Patrick Star"
 ```
+
+## The Global Object
+

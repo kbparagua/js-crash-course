@@ -5,8 +5,8 @@
 1. What's the output?
 
   ```js
-  var x;
-  alert(x + 5);
+  var type = typeof (3.14 + 1);
+  alert(type);
   ```
   
 1. What's the output?
@@ -15,11 +15,23 @@
   var string = "";
   
   if (string && true){
-    alert("YES");
+    if (0){
+      alert("YES");
+    }
+    else {
+      alert("I don't know");
+    }
   }
   else {
     alert("NO");
   }
+  ```
+  
+1. What's the output?
+
+  ```js
+  var x;
+  alert(x + 5);
   ```
 
 1. What's the output?

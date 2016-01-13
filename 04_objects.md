@@ -148,9 +148,16 @@ var spongebob = {
 spongebob.sayHi(); // "Hi! I am Spongebob Squarepants"
 ```
 
-The value of `this` is evaluated at run-time, so it will always be equal to the object invoked the method.
+The value of `this` is evaluated at run-time, so it will always be equal to the object that invoked the method.
 
 ```js
+var spongebob = {
+  name: "Spongebob Squarepants",
+  sayHi: function(){
+    alert("Hi! I am " + this.name);
+  };
+};
+
 var patrick = {name: "Patrick Star"};
 patrick.sayHi = spongebob.sayHi;
 
@@ -163,9 +170,8 @@ In browser's context, the global object is called `window`.
 Everything declared in the global scope will automatically be a property of `window`.
 
 ```js
+// Both statements will achieve the same result.
 var myGlobal = "Global Variable";
-
-// The statement above is interpreted as:
 window.myGlobal = "Global Variable";
 
 // Both will work:
@@ -173,15 +179,15 @@ alert(myGlobal); // "Global Variable"
 alert(window.myGlobal); // "Global Variable"
 ```
 
-A function in the global scope is considered as a method of the global object.
+A function in the global scope is also considered a method of the global object.
 
 ```js
-// Both statements will achieve the same result:
+// Both statements will achieve the same result.
 function foo(){};
 window.foo = function(){};
 ```
 
-Any function **NOT** invoked by any object is considered to be invoked by the global object. Meaning, the value of `this` will be the global object, if a method is not invoked by any object.
+Any function **NOT** invoked by any object is considered to be invoked by the global object. Meaning, the value of `this` will be the global object, if a function is not invoked by any object.
 
 ```js
 function foo(){

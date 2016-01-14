@@ -98,6 +98,29 @@
   alert(string);
   ```
   
+1. What's the output?
+
+  ```js
+  function foo(fx){
+    var animal = "Dog";
+    return fx();
+  }
+  
+  function baz(){
+    var animal = "Pig";
+    
+    return function(){
+      if (animal == "Pig")
+        return "Oink";
+      else
+        return "Woof"
+    };
+  }
+  
+  var sound = baz();
+  alert(foo(sound));
+  ```
+  
 1. Re-write the function `initAdders` to achieve the correct behavior.
 
   ```js

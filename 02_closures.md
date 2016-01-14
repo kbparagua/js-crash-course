@@ -139,16 +139,16 @@ outside(1); // 200
 
 ## Returning A Closure
 
-Normally, when an inner function is created, it will not be executed yet, rather it will be returned by the containing function. This is the usual use of closures.
+Normally, when an inner function is created, it will not be executed yet, rather it will be returned by the containing function.
 
 In the example below, instead of executing the inner function instantly, we are just going to return a reference to the inner function.
 
 ```js
-//
+
 //  Global scope:
 //
 //  makeAdder -> function(){}
-//
+
 function makeAdder(number){
   function adder(x){
     return x + number;
@@ -161,11 +161,11 @@ function makeAdder(number){
 Or we can just return an anonymous function expression.
 
 ```js
-//
+
 //  Global scope:
 //
 //  makeAdder -> function(){}
-//
+
 function makeAdder(number){
   return function(x){
     return x + number;
@@ -176,42 +176,48 @@ function makeAdder(number){
 This is how we'll use the `makeAdder` function.
 
 ```js
-//
+
 //  Global scope:
 //
 //  makeAdder -> function(){}
 //
-//                ---> (makeAdder)env1
-//  addFiveTo ---|                       
-//                ---> function(){}
-//   _______________________
-//  |(makeAdder)env1:       |
-//  |                       |
-//  | number -> 5           |
-//  |_______________________|
-//
-var addFiveTo = makeAdder(5);
-// (makeAdder)env1 will NOT be destroyed because it is still referenced by the function `addFiveTo`.
+//              --> (makeAdder)env1
+//  addFiveTo -|                       
+//              --> function(){}
 
-//
+//   _____________________
+//  |(makeAdder)env1:     |
+//  |                     |
+//  | number -> 5         |
+//  |_____________________|
+
+var addFiveTo = makeAdder(5);
+
+// (makeAdder)env1 will NOT be destroyed because it is still referenced by the closure `addFiveTo`.
+
 //  Global scope:
+//
 //  makeAdder -> function(){}      
 //
 //                ---> (makeAdder)env1   
 //  addFiveTo ---|                       
-//                ---> function(){}      
-//   _________________________________
-//  |(makeAdder)env1:                 |
-//  |                                 |
-//  | number -> 5                     |
-//  |   ___________________________   |
-//  |  |(addFiveTo)env2:           |  |
-//  |  |                           |  |
-//  |  | x -> 10                   |  |
-//  |  |___________________________|  |
-//  |_________________________________|
-//
+//                ---> function(){}   
+
+//   ___________________
+//  |(makeAdder)env1:   |
+//  |                   |
+//  | number -> 5       |
+//  |___    ____________|
+//      |  |
+//      |  |
+//   ___|  |___________
+//  |(addFiveTo)env2:  |
+//  |                  |
+//  | x -> 10          |
+//  |__________________|
+
 addFiveTo(10); // 15
+
 // (addFiveTo)env2 will be destroyed.
 // (makeAdder)env1 will NOT be destroyed!
 ```

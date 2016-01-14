@@ -254,11 +254,13 @@ function execute(myFunction){
   alert(myFunction());
 }
 
-//   ________________
-//  |(create)env1:   |
-//  |                |
-//  | x -> "Hello"   |
-//  |___    _________|
+//  This diagram shows that (execute)env3 has no influence over the closure created, 
+//  even if the closure is executed in its environment.
+//   ________________       _________________
+//  |(create)env1:   |     |(execute)env3:   |
+//  |                |     |                 |
+//  | x -> "Hello"   |     |  x -> "Hola"    |
+//  |___    _________|     |_________________|
 //      |  |
 //      |  |
 //   ___|  |___________
@@ -268,6 +270,9 @@ function execute(myFunction){
 //  |__________________|
 
 create(); // "Hello World"
+
+// (myFunction)env2 will be destroyed.
+// (create)env1 will not be destroyed.
 ```
 
 ## References

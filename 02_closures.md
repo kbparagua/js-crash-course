@@ -243,7 +243,7 @@ function create(){
   // Create closure using anonymous function expression.
   execute(function(){
     var y = "World";
-    return x + " " +y;
+    return x + " " + y;
   });
 }
 

@@ -143,9 +143,9 @@ outside(1); // 200
 // (outside)env1 will be destroyed.
 ```
 
-## Returning A Closure
+## Returning a Closure
 
-Normally, when an inner function is created, it will not be executed immediately, rather it will be returned by the containing function.
+Normally, when an inner function is created, it will not be executed immediately. Most of the time, the closure will be returned by the containing function, or it will be passed to another function.
 
 In the example below, instead of executing the inner function immediately, a reference of it is returned by the containing function.
 
@@ -230,6 +230,44 @@ addFiveTo(10); // 15
 
 // (addFiveTo)env2 will be destroyed.
 // (makeAdder)env1 will NOT be destroyed!
+```
+
+## Closure as an Argument
+
+Closure will always reference the environment where it is created, and not where it is executed.
+
+```js
+function create(){
+  var x = "Hello";
+  
+  // Create closure using anonymous function expression.
+  execute(function(){
+    var y = "World";
+    return x + " " +y;
+  });
+}
+
+function execute(myFunction){
+  var x = "Hola";
+  
+  // Execute closure.
+  alert(myFunction());
+}
+
+//   ________________
+//  |(create)env1:   |
+//  |                |
+//  | x -> "Hello"   |
+//  |___    _________|
+//      |  |
+//      |  |
+//   ___|  |___________
+//  |(myFunction)env2: |
+//  |                  |
+//  | y -> "World"     |
+//  |__________________|
+
+create(); // "Hello World"
 ```
 
 ## References

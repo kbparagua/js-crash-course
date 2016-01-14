@@ -272,7 +272,8 @@ function execute(myFunction){
 create(); // "Hello World"
 
 // (myFunction)env2 will be destroyed.
-// (create)env1 will not be destroyed.
+// (execute)env3 will be destroyed.
+// (create)env1 will be destroyed.
 ```
 
 ## References

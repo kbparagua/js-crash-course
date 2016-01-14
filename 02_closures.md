@@ -39,7 +39,7 @@ foo(5); // 7
 
 ## Linked Environments
 
-When a function is declared inside another function, the inner function will store a reference for the environment of the containing function.
+When a function is declared inside another function, the inner function will store a reference of the containing function's environment.
 
 ```js
 function outside(o){
@@ -49,7 +49,7 @@ function outside(o){
   }
 }
 
-//  `inside` will store a reference for both the inner function and the current environment.
+//  `inside` will store a reference of both the inner function and the current environment.
 //   ____________________________
 //  |(outside)env1:              |
 //  |                            |
@@ -65,7 +65,7 @@ outside(1);
 // (outside)env1 will be destroyed.
 ```
 
-When the inner function is executed, it will create a bridge between its own environment and its stored environment. Because of that bridge, the inner fuction can access any arguments or variables of the containing function.
+When the inner function is executed, it will create a bridge between its own environment and its stored environment. Because of that bridge, the inner fuction can access any arguments and variables of the containing function.
 
 ```js
 function outside(o){
@@ -77,7 +77,7 @@ function outside(o){
   inside();
 }
 
-//  (inside)env2 can access argument and variables in (outside)env1, because of the bridge between them.
+//  (inside)env2 can access argument and variables of (outside)env1, because of the bridge between them.
 //   ____________________________
 //  |(outside)env1:              |
 //  |                            |
@@ -100,7 +100,9 @@ outside(1); // 101
 // (outside)env1 will be destroyed.
 ```
 
-`inside` here is an example of a closure. **Closure** is a combination of a function and a reference to an environment, and it can be created by declaring a function inside another function.
+`inside` here is an example of a closure. 
+
+**Closure** is a combination of a function and a reference to an environment, and it can be created by declaring a function inside another function.
 
 ## Arguments and Variables
 
@@ -145,7 +147,7 @@ outside(1); // 200
 
 Normally, when an inner function is created, it will not be executed immediately, rather it will be returned by the containing function.
 
-In the example below, instead of executing the inner function immediately, a reference to it is returned by the containing function.
+In the example below, instead of executing the inner function immediately, a reference of it is returned by the containing function.
 
 ```js
 
@@ -177,7 +179,7 @@ function makeAdder(number){
 }
 ```
 
-Notice that the `makeAdder` function acts like a function builder.
+Notice that the `makeAdder` function acts like a function builder. Also, it is not building just a regular function, but it is creating and returning a closure.
 
 ```js
 
@@ -199,7 +201,8 @@ var addFiveTo = makeAdder(5);
 
 // (makeAdder)env1 will NOT be destroyed because it is still referenced by the closure `addFiveTo`.
 ```
-The code below shows what will happen to the environemnts when the generated function `addFiveTo` is executed.
+
+Normally, after a function's execution, its environment is destroyed. But in this instance, since the closure was returned and not executed inside `makeAdder`, it's like telling the system that the environment `(makeAdder)env1` is still needed by the script.
 
 ```js
 //  Global scope:
@@ -228,8 +231,6 @@ addFiveTo(10); // 15
 // (addFiveTo)env2 will be destroyed.
 // (makeAdder)env1 will NOT be destroyed!
 ```
-
-Notice that the environment of the containing function is never destroyed. This is because it is still used by the closure `addFiveTo`.
 
 ## References
 - http://stackoverflow.com/a/111111

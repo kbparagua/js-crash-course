@@ -76,21 +76,29 @@ function outside(o){
 }
 
 // (inside)env2 can access argument and variables in (outside)env1, because of the bridge between them.
-//   _________________              _____________________________
-//  |(inside)env2:    |            |(outside)env1:               |
-//  |                 |____________|                             |
-//  | i -> 100         ____________  o -> 1                      |
-//  |_________________|            |          --> (outside)env1  |
-//                                 | inside -|                   |
-//                                 |          --> function(){}   |
-//                                 |_____________________________|
-//
+//   ____________________________
+//  |(outside)env1:              |
+//  |                            |
+//  | o -> 1                     |
+//  |          --> (outside)env1 |
+//  | inside -|                  |
+//  |          --> function(){}  |
+//  |_____    ___________________|
+//        |  |
+//        |  |
+//   _____|  |________
+//  |(inside)env2:    |      
+//  |                 |
+//  | i -> 100        | 
+//  |_________________|
+
 outside(1); // 101
+
 // (inside)env2 will be destroyed.
 // (outside)env1 will be destroyed.
 ```
 
-`inside` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.
+`inside` here is an example of a closure. **Closure** is composed of a function and a reference to an environment, and it can be created by declaring a function inside another function.
 
 ## Arguments and Variables
 
@@ -107,18 +115,24 @@ function outside(o){
   inside();
 }
 
-//
-//                              This is NOT a CLONE!
-//   __________________          ____________________________
-//  |(inside)env2:     |        |(outside)env1:              |
-//  |                  |________|                            |
-//  | i -> 100          ________  o -> 100                   |
-//  |__________________|        |          --> (outside)env1 |
-//                              | inside -|                  |
-//                              |          --> function(){}  |
-//                              |____________________________|
-//
+//   ____________________________
+//  |(outside)env1:              |
+//  |                            |
+//  | o -> 100                   |
+//  |          -->(outside)env1  |
+//  | inside -|                  |
+//  |          -->function(){}   |
+//  |_____    ___________________|
+//        |  |
+//        |  |
+//   _____|  |_______
+//  |(inside)env2:   |
+//  |                |
+//  | i -> 100       |
+//  |________________|
+
 outside(1); // 200
+
 // (inside)env2 will be destroyed.
 // (outside)env1 will be destroyed.
 ```

@@ -94,40 +94,33 @@ outside(1); // 101
 
 ## Arguments and Variables
 
-The inner function **DOES NOT** copy the arguments and variables of the containing function. So any changes inside the containing function, even after the inner function declaration, will still be reflected when the inner function is executed.
+The inner function **DOES NOT** copy the arguments and variables of the outer function. So any changes inside the outer, even after the inner function declaration, will still be reflected when the inner function is executed.
 
 ```js
-function container(x){
+function outside(o){
   function inside(){
-    var y = 100;
-    return x + y;
+    var i = 100;
+    return o + i;
   }
   
-  x = 100;
-  
-  // Execute inner function.
+  o = 100;
   inside();
 }
 
-//   _________________________________
-//  |(container)env1:                 |
-//  |                                 |
-//  | x -> 100                        |
-//  |                                 | 
-//  |            ---> (container)env1 |
-//  | inside ---|                     |
-//  |            ---> function(){}    |
-//  |                                 |
-//  |   _________________________     |
-//  |  |(inside)env2:            |    |
-//  |  |                         |    |
-//  |  | y -> 100                |    |
-//  |  |_________________________|    |
-//  |_________________________________|
 //
-container(1); // 200
+//                              This is NOT a CLONE!
+//   __________________          ____________________________
+//  |(inside)env2:     |        |(outside)env1:              |
+//  |                  |________|                            |
+//  | i -> 100          ________  o -> 100                   |
+//  |__________________|        |          --> (outside)env1 |
+//                              | inside -|                  |
+//                              |          --> function(){}  |
+//                              |____________________________|
+//
+outside(1); // 200
 // (inside)env2 will be destroyed.
-// (container)env1 will be destroyed.
+// (outside)env1 will be destroyed.
 ```
 
 ## Returning A Closure

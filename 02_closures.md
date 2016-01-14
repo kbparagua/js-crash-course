@@ -123,9 +123,9 @@ function outside(o){
 //  |(outside)env1:              |
 //  |                            |
 //  | o -> 100                   |
-//  |          -->(outside)env1  |
+//  |          --> (outside)env1 |
 //  | inside -|                  |
-//  |          -->function(){}   |
+//  |          --> function(){}  |
 //  |_____    ___________________|
 //        |  |
 //        |  |

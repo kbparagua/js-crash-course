@@ -37,73 +37,57 @@ foo(5); // 7
 
 ## Nested Environments
 
-When a function is declared inside another function, the inner function will store a reference to the environemnt of the containing function.
+When a function is declared inside another function, the inner function will store a reference to the environment of the containing function.
 
 ```js
-function container(x){
+function outside(o){
   function inside(){
-    var y = 100;
-    return x + y;
+    var i = 100;
+    return o + i;
   }
 }
 
 //
-// The following environment will be created when `container(1)` is executed. 
-// Notice that `inside` will store references for both the inner function
-// and the current environment.
-//   _________________________________
-//  |(container)env1:                 |
-//  |                                 |
-//  | x -> 1                          |
-//  |                                 |
-//  |            ---> (container)env1 |
-//  | inside ---|                     |
-//  |            ---> function(){}    |
-//  |_________________________________|
+//  This environment will be created during execution of `outside(1)`.
+//   ____________________________
+//  |(outside)env1:              |
+//  |                            |
+//  | o -> 1                     |
+//  |                            |
+//  |          --> (outside)env1 |
+//  | inside -|                  |
+//  |          --> function(){}  |
+//  |____________________________|
 //
-container(1);
-// (container)env1 will be destroyed.
+outside(1);
+// (outside)env1 will be destroyed.
 ```
 
-Since the inner function has a reference to the current environment, it can access the arguments/variables available on that environment when it is executed.
+When the inner function is executed, it will create a bridge/connection with the outer function's environment. With that bridge, it can access any arguments or variables inside the connected environment.
 
 ```js
-function container(x){
+function outside(o){
   function inside(){
-    var y = 100;
-    return x + y;
+    var i = 100;
+    return o + i;
   }
   
-  // Execute inner function.
   inside();
 }
 
-// Since `inside` has a reference to (container)env1, when it is executed, 
-// it will create a new environment, (inside)env2, within (container)env1.
-// It is an environment within another environment (a box inside another box).
+// (inside)env2 can access argument and variables in (outside)env1, because of the bridge between them.
+//   _________________              _____________________________
+//  |(inside)env2:    |            |(outside)env1:               |
+//  |                 |____________|                             |
+//  | i -> 100         ____________  o -> 1                      |
+//  |_________________|            |          --> (outside)env1  |
+//                                 | inside -|                   |
+//                                 |          --> function(){}   |
+//                                 |_____________________________|
 //
-// Because of that structure, (inside)env2 will have access to the arguments 
-// and variables of (container)env1.
-//   _________________________________
-//  |(container)env1:                 |
-//  |                                 |
-//  | x -> 1                          |
-//  |                                 |
-//  |            ---> (container)env1 |
-//  | inside ---|                     |
-//  |            ---> function(){}    |
-//  |                                 |
-//  |   __________________________    |
-//  |  |(inside)env2:             |   |
-//  |  |                          |   |
-//  |  | y -> 100                 |   |
-//  |  |__________________________|   |
-//  |_________________________________|
-//
-//
-container(1); // 101
+outside(1); // 101
 // (inside)env2 will be destroyed.
-// (container)env1 will be destroyed.
+// (outside)env1 will be destroyed.
 ```
 
 `inside` here is an example of a closure. **Closure** is composed of a function and an environment, and it can be created by declaring a function inside another function.

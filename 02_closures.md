@@ -256,11 +256,14 @@ function execute(myFunction){
 
 //  This diagram shows that (execute)env3 has no influence over the closure created, 
 //  even if the closure is executed in its environment.
-//   ________________       _________________
-//  |(create)env1:   |     |(execute)env3:   |
-//  |                |     |                 |
-//  | x -> "Hello"   |     |  x -> "Hola"    |
-//  |___    _________|     |_________________|
+//   ________________________________       _________________
+//  |(create)env1:                   |     |(execute)env3:   |
+//  |                                |     |                 |
+//  | x -> "Hello"                   |     | x -> "Hola"     |
+//  |             --> (create)env1   |     |_________________|
+//  | anonymous -|                   |
+//  |             --> function(){}   |
+//  |___    _________________________|     
 //      |  |
 //      |  |
 //   ___|  |___________

@@ -119,6 +119,31 @@ var obj = {"100": "One Hundred"};
 alert(obj[50 + 50]); // "One Hundred"
 ```
 
+## Object as Argument
+
+
+```js
+function changeMe(object){
+  object.x = "changed";
+}
+
+var obj = {x: "unchanged"};
+changeMe(obj);
+
+alert(obj.x); // "changed"
+```
+
+```js
+function changeMe(object){
+  object = {x: "changed"};
+}
+
+var obj = {x: "unchanged"};
+changeMe(obj);
+
+alert(obj.x); // "unchanged"
+```
+
 ## Methods
 
 Method is just a name used as a convention to refer to a property that has a function as its value.

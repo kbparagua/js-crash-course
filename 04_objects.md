@@ -123,11 +123,16 @@ alert(obj[50 + 50]); // "One Hundred"
 
 
 ```js
+
 function changeMe(object){
+  // object --> <reference:01> => {x: "unchanged"}
   object.x = "changed";
+  // object --> <reference:01> => {x: "changed"}
 }
 
 var obj = {x: "unchanged"};
+// obj --> <reference:01> => {x: "unchanged"}
+
 changeMe(obj);
 
 alert(obj.x); // "changed"
@@ -135,10 +140,14 @@ alert(obj.x); // "changed"
 
 ```js
 function changeMe(object){
+  // object --> <reference:01> => {x: "unchanged"}
   object = {x: "changed"};
+  // object --> <reference:02> => {x: "changed"}
 }
 
 var obj = {x: "unchanged"};
+// obj --> <reference:01> => {x: "unchanged"}
+
 changeMe(obj);
 
 alert(obj.x); // "unchanged"

@@ -111,7 +111,7 @@ foo = function(){ alert("foo"); }
 
 ## Immediately-Invoked Function Expression (IIFE)
 
-Since the only way to limit the scope of variables is by enclosing them in a function, we often create a function that is NOT intended for re-use, but just a way to hide variables.
+Since the only way to limit the scope of variables is by enclosing them in a function, a function that is NOT intended for re-use is often created just a way to hide variables.
 
 ```js
 var init = function(){
@@ -144,7 +144,7 @@ Since the `init` function is not intended to be re-used again, sometimes it is b
 alert(name); // ReferenceError: name is not defined.
 ```
 
-Ideally, we can also remove the function name since we don't really need to call that function again.
+Ideally, the function name can be removed since it will not be called again.
 
 ```js
 // Create and execute function.
@@ -165,7 +165,8 @@ alert(name); // ReferenceError: name is not defined.
 `arguments`
   - an Array-like object corresponding to the arguments passed to a function.
 
-If a function is declared with no arguments, we can still pass arguments to it.
+If a function is declared with no arguments, arguments can still be passed to it.
+
 ```js
 function printItems(){
   for (var i = 0, n = arguments.length; i < n; i++){
@@ -177,7 +178,7 @@ function printItems(){
 printItems("pig", "cat", "dog"); // "pig" "cat" "dog"
 ```
 
-If a function is declared with less arguments, we can still pass more arguments to it.
+If a function is declared with less arguments, more arguments can still be passed to it.
 
 ```js
 function printItems(prefix){
@@ -190,9 +191,9 @@ function printItems(prefix){
 printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 ```
 
-## Primitive Arguments
+## Manipulating Arguments
 
-Primitive data types arguments (`number`, `string`, `boolean`) are passed by value.
+Arguments are passed by value.
 
 ```js
 function cook(arg){
@@ -206,5 +207,3 @@ cook(chicken);
 // Value of chicken will not change.
 alert(chicken); // "chicken"
 ```
-
-*(Object arguments will be discussed on next chapters)*

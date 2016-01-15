@@ -58,6 +58,21 @@ var myFunction = function(){ alert("Hello"); };
 alert(function(){ alert("Hi"); });
 ```
 
+## Scopes
+
+Both function declaration and function expression create local function.
+
+```js
+function foo(){
+  function privateA(){ alert("Private A"); }
+  var privateB = function(){ alert("Private B"); };
+}
+
+privateA(); // ReferenceError: privateA is not defined.
+privateB(); // ReferenceError: privateA is not defined.
+
+```
+
 ## Hoisting
 
 Declaring a function anywhere is equivalent to declaring it at top.

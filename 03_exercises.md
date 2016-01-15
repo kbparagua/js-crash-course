@@ -5,22 +5,13 @@
 1. What's the output?
 
   ```js
-  var type = typeof (3.14 + 1);
-  alert(type);
-  ```
+  var str = "";
   
-1. What's the output?
-
-  ```js
-  var string = "";
-  
-  if (string && true){
-    if (0){
+  if (str && true){
+    if (0)
       alert("YES");
-    }
-    else {
+    else
       alert("I don't know");
-    }
   }
   else {
     alert("NO");
@@ -30,22 +21,41 @@
 1. What's the output?
 
   ```js
-  var x;
-  alert(x + 5);
+  var magicNumber;
+  alert(magicNumber + 42);
   ```
 
 1. What's the output?
 
   ```js
-  var y;
+  function speak(x){
+    if (x === null)
+      alert("What?");
+    else
+      alert("Yes!");
+  }
   
-  if (y == null){
-    alert("YEAH");
+  speak();
+  ```
+  
+1. What's the output?
+
+  ```js
+  var number = 1;
+  
+  if (number > 0){
+    var str = "positive";
+  }
+  else if (number == 0){
+    var str = "zero";
   }
   else {
-    alert("NAH");
+    var str = "negative";
   }
+  
+  alert(str);
   ```
+
 
 1. What's the output?
 
@@ -56,8 +66,24 @@
   alert(x);
   
   var x = 1;
-  
   function foo(){ x = 2; };
+  ```
+  
+1. What's the output?
+
+  ```js
+  function foo(x){
+    function bar(){ x = 999; }
+    return bar;
+  }
+  
+  
+  var num = 1000,
+      foobar = foo(num);
+  
+  foobar();
+  
+  alert(num);
   ```
 
 1. What's the output?
@@ -136,6 +162,6 @@
   initAdders();
   
   var addOneTo = adders[1];
-  console.log( addOneTo(3) ); // 9 - should be 4
+  alert( addOneTo(3) ); // 9 - should be 4
   ```
 

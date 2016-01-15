@@ -189,3 +189,22 @@ function printItems(prefix){
 
 printItems("my ", "pig", "cat", "dog"); // "my pig" "my cat" "my dog"
 ```
+
+## Primitive Arguments
+
+Primitive data types arguments (`number`, `string`, `boolean`) are passed by value.
+
+```js
+function cook(arg){
+  arg = "fried chicken";
+}
+
+var chicken = "chicken";
+
+cook(chicken);
+
+// Value of chicken will not change.
+alert(chicken); // "chicken"
+```
+
+*(Object arguments will be discussed on next chapters)*

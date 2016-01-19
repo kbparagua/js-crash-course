@@ -121,13 +121,22 @@ alert(obj[50 + 50]); // "One Hundred"
 
 ## Object as Argument
 
+When an object is created, javascript returns a reference instead of the object itself. Meaning, when dealing with an object, we are really talking to a reference rather than talking directly to the object itself.
 
 ```js
+// [reference:001] -> {myKey: "value"}
+// myObject -> [reference:001]
 
+var myObject = {myKey: "value"};
+```
+
+When an object is passed an argument, a reference of it is actually passed. So, manipulating that reference will reflect the change to the real object.
+
+```js
 function changeMe(object){
-  // object --> <reference:01> => {x: "unchanged"}
+  // object -> <reference:01> => {x: "unchanged"}
   object.x = "changed";
-  // object --> <reference:01> => {x: "changed"}
+  // object -> <reference:01> => {x: "changed"}
 }
 
 var obj = {x: "unchanged"};
@@ -137,6 +146,8 @@ changeMe(obj);
 
 alert(obj.x); // "changed"
 ```
+
+But assigning the argument to a different object/reference will not affect the old object/reference.
 
 ```js
 function changeMe(object){

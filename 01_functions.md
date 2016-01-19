@@ -66,6 +66,9 @@ Both function declaration and function expression create local function.
 function foo(){
   function privateA(){ alert("Private A"); }
   var privateB = function(){ alert("Private B"); };
+  
+  privateA(); // "Private A"
+  privateB(); // "Private B"
 }
 
 privateA(); // ReferenceError: privateA is not defined.

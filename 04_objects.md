@@ -130,7 +130,7 @@ When an object is created, javascript returns a reference instead of the object 
 var myObject = {myKey: "value"};
 ```
 
-When an object is passed an argument, a reference of it is actually passed. So, manipulating that reference will reflect the change to the real object.
+When an object is passed as an argument, a reference of it is actually passed. So, manipulating that reference will reflect the change to the real object.
 
 ```js
 function changeMe(object){

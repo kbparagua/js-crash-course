@@ -2,8 +2,6 @@
 
 ## Function Environment
 
-For the sake of simplicity, let's use the following definition.
-
 An environment is a temporary place (*let's just say a box*) where arguments and local variables are stored when a function is executed. It is created at the start of the execution and *normally destroyed after execution is finished*.
 
 ```js
@@ -39,7 +37,7 @@ foo(5); // 7
 
 ## Linked Environments
 
-When a function is declared inside another function, the inner function will store a reference of the containing function's environment.
+When a function is declared inside another function, the inner function will reference both the function and the containing function's environment.
 
 ```js
 function outside(o){
@@ -49,7 +47,7 @@ function outside(o){
   }
 }
 
-//  `inside` will store a reference of both the inner function and the current environment.
+//  `inside` will store a reference for both the inner function and the current environment.
 //   ____________________________
 //  |(outside)env1:              |
 //  |                            |
@@ -65,7 +63,7 @@ outside(1);
 // (outside)env1 will be destroyed.
 ```
 
-When the inner function is executed, it will create a bridge between its own environment and its stored environment. Because of that bridge, the inner fuction can access any arguments and variables of the containing function.
+When the inner function is executed, it will create a bridge between its own environment and the stored environment. Because of that bridge, the inner fuction can access any arguments and variables of the containing function.
 
 ```js
 function outside(o){
@@ -77,7 +75,7 @@ function outside(o){
   inside();
 }
 
-//  (inside)env2 can access argument and variables of (outside)env1, because of the bridge between them.
+//  (inside)env2 can access argument and variables of (outside)env1 because of the bridge between them.
 //   ____________________________
 //  |(outside)env1:              |
 //  |                            |

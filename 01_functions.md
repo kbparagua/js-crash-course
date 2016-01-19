@@ -43,6 +43,7 @@
 ## Function Expressions
 
 Function expressions are just function declaration used as an expression.
+
 ```js
 // Assigning the function hello to the variable myFunction.
 var myFunction = function hello(){ alert("Hello"); };
@@ -51,6 +52,7 @@ alert(function hi(){ alert("Hi"); });
 ```
 
 Function name can be ommited on function expressions.
+
 ```js
 // Assigning an anonymous function to the variable myFunction.
 var myFunction = function(){ alert("Hello"); };
@@ -72,8 +74,7 @@ function foo(){
 }
 
 privateA(); // ReferenceError: privateA is not defined.
-privateB(); // ReferenceError: privateA is not defined.
-
+privateB(); // ReferenceError: privateB is not defined.
 ```
 
 ## Hoisting
@@ -100,6 +101,7 @@ foo();
 ### Function Expressions
 
 Function expressions are not hoisted. They are treated like a regular variable declaration.
+
 ```js
 foo(); // ReferenceError: foo is not defined
 var foo = function(){ alert("foo"); }
@@ -200,10 +202,15 @@ Arguments are passed by value.
 
 ```js
 function cook(arg){
+  // arg -> "chicken"
+  
   arg = "fried chicken";
+  // arg -> "fried chicken"
 }
 
+
 var chicken = "chicken";
+// chicken -> "chicken"
 
 cook(chicken);
 

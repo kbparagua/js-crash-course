@@ -243,3 +243,50 @@ function foo(){
 foo(); // window
 window.foo(); // window
 ```
+
+## Changing This
+
+A way to change the value of `this` on runtime is by using the function `call` or `apply`.
+
+```js
+function talk(){
+  alert(this.name);
+}
+
+var batman = {name: "Batman"},
+    robin = {name: "Robin"};
+
+// Execute talk in the context of batman.
+// Inside talk, `this` will be equal to batman.
+talk.call(batman); // "Batman"
+
+// Execute talk in the context of robin.
+// Inside talk, `this` will be equal to robin.
+talk.apply(robin); // "Robin"
+```
+
+Passing arguments to the function is possible when invoking functions using `call` and `apply`.
+When using `call` the arguments are separated by comma.
+
+```js
+function talk(prefix, suffix){
+  alert(prefix + this.name + suffix);
+}
+
+var batman = {name: "Batman"};
+
+talk.call(batman, "I am ", "!"); // "I am Batman!"
+```
+
+When using `apply` the arguments must be inside an array.
+
+```js
+var robin = {name: "Robin"};
+
+talk.call(robin, ["Hello! I am ", "!!!"]); // "Hello! I am Robin!!!"
+```
+
+Basically, `call` and `apply` are just the same, they just differ in the way they accept arguments.
+
+- **A**pply - **A**rray
+- **C**all - **C**omma

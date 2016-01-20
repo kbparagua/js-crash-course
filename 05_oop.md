@@ -2,6 +2,8 @@
 
 ## Constuctor
 
+A constructor is just a regular function that is used to create an object.
+
 ```js
 function person(name){
   // this refers to the new object

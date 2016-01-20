@@ -1,6 +1,6 @@
 # 05: Object-Oriented Programming
 
-## Constuctor
+## Constructor
 
 A constructor is just a regular function that is used to create an object.
 

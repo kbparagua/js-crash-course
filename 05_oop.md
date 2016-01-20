@@ -11,7 +11,7 @@ function person(name){
 var bruce = new person("bruce"); // {name: "bruce"}
 ```
 
-It is a convention in the javascript community to capitalized the first letter of the constructor name.
+It is a convention in the javascript community to capitalize the first letter of the constructor name.
 
 ```js
 function Person(name){

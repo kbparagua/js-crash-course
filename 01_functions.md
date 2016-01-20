@@ -1,5 +1,22 @@
 # 01: Functions
 
+## Syntax
+
+```js
+function name(arg1, arg2, arg3){
+  // body
+}
+```
+
+## Data Type
+
+Functions are of type `function`.
+
+```js
+function foo(){}
+alert(typeof foo); // "function"
+```
+
 ## JS Functions are First-class Citizens
 
 *"First-Class Citizen is an entity that can be constructed at run-time, passed as a parameter, returned from a subroutine, or assigned into a variable"* [(wikipedia)](https://en.wikipedia.org/wiki/First-class_citizen)

@@ -133,16 +133,16 @@ foo = function(){ alert("foo"); }
 
 ## Immediately-Invoked Function Expression (IIFE)
 
-Since the only way to limit the scope of variables is by enclosing them in a function, a function that is NOT intended for re-use is often created just a way to hide variables.
+Since the only way to limit the scope of variables is by enclosing them in a function, a function that is NOT intended for reuse is often created just a way to hide variables.
 
 ```js
-var init = function(){
+function init(){
   var name = "Bruce Lee";
   var greeting = "Welcome";
   
   var message = greeting + ' ' + name + '!';
   alert(message);
-};
+}
 
 init(); // Welcome Bruce Lee!
 
@@ -150,7 +150,7 @@ init(); // Welcome Bruce Lee!
 alert(name); // ReferenceError: name is not defined.
 ``` 
 
-Since the `init` function is not intended to be re-used again, sometimes it is better to just execute it immediately after it is created.
+Since the `init` function is not intended to be reused again, sometimes it is better to just execute it immediately after it is created.
 
 ```js
 // Create and execute function.

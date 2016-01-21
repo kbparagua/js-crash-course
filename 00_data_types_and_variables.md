@@ -181,13 +181,15 @@ Declaring a local variable on the global scope will make it accessible globally.
 var global = 7;
 
 function foo(){
-  alert(global); // 7
+  alert(global);
 }
 
 function bar(){
-  alert(global + 1); // 8
+  alert(global + 1);
 }
 
+foo(); // 7
+bar(); // 8
 alert(global - 1); // 6
 ```
 

@@ -101,3 +101,14 @@ zpongebob.talk(); // "brainzzz..."
 
 alert( vatrick.speed ); // 1.5
 ```
+
+The constructed objects **DO NOT** copy the properties of the prototype, they will just search their constructor's prototype when an unknown key is accessed.
+
+```js
+// vatrick: Searching `talk` in my property list.
+// vatrick: I don't have a property `talk`.
+// vatrick: Searching `talk` in my constructor's prototype.
+// vatrick: I found it.
+// vatrick: Invoke `talk` method of my contructor's prototype.
+vatrick.talk();
+```

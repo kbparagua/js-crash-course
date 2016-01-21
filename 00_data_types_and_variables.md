@@ -173,6 +173,26 @@ console.log(foo); // ReferenceError: foo is not defined.
 
 Local variables declared inside a function will only be accessible inside that function.
 
+### Local Variable on Global Scope
+
+Declaring a local variable on the global scope will make it accessible globally.
+
+```js
+var global = 7;
+
+function foo(){
+  alert(global); // 7
+}
+
+function bar(){
+  alert(global + 1); // 8
+}
+
+alert(global - 1); // 6
+```
+
+In other words, a local variable on the global scope is a global variable.
+
 ### Multiple Declarations
 
 You can delcare multiple variables at once by separating each variable with comma(`,`).

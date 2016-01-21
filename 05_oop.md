@@ -155,3 +155,23 @@ Zombie.prototype = {
 var krabz = new Zombie("krabz");
 krabz._imPrivate(); // "do not call me outside"
 ```
+
+## Relationship
+
+```js
+function Zombie(){};
+Zombie.prototype = {};
+
+var zpongebob = new Zombie();
+
+//          _________________________
+//   ----> | Zombie => function(){}: |
+//  |   -- | prototype               |
+//  |  |   |_________________________|
+//  |  |                                  ____________
+//  |  |     ___________________         | zpongebob: |
+//  |   --> | Zombie.prototype: | <----- | __proto__  |
+//   ------ | constructor       |        |____________|
+//          |___________________|
+
+```

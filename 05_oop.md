@@ -46,7 +46,7 @@ var z = new Zombie();
 
 ## Prototype
 
-Prototype is an object and a property of the constructor in which all constructed objects will inherit to.
+Prototype is an object and a property of the constructor in which all constructed objects will inherit to. By default, it is an empty object.
 
 ```js
 function Zombie(){

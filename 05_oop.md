@@ -72,3 +72,32 @@ var zpongebob = new Zombie(),
 zpongebob.talk(); // "brainzzz..."
 ```
 
+It is a common practice to put common properties on the constructor's prototype.
+
+```js
+function Zombie(){}
+
+Zombie.prototype = {
+  speed: 1.5,
+  talk: function(){ alert("brainzzz..."); }
+};
+
+//   -- Zombie.prototype:
+//  |   { 
+//  |     speed: 1.5,
+//  |     talk: function(){ alert("brainzzz..."); }
+//  |   }
+//  |                                             
+//  |
+//  |
+//   ---> zpongebob: {}
+//  |   
+//   ---> vatrick: {}
+
+var zpongebob = new Zombie(),
+    vatrick = new Zombie();
+    
+zpongebob.talk(); // "brainzzz..."
+
+alert( vatrick.speed ); // 1.5
+```

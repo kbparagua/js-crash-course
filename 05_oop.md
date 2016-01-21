@@ -34,6 +34,8 @@ function zombie(){
 var z = zombie.call({}); // {speed: 1.5}
 ```
 
+`zombie` is an example of a constructor. It is a function that is used to construct an object.
+
 ## Prototype
 
 Prototype is an object and a property of the constructor in which the created objects will inherit to.

@@ -46,39 +46,29 @@ var z = new Zombie();
 
 ## Prototype
 
-Prototype is an object and a property of the constructor in which the created objects will inherit to.
+Prototype is an object and a property of the constructor in which all constructed objects will inherit to.
 
 ```js
-function Person(name){
-  this.name = name;
+function Zombie(){
+  this.speed = 1.5;
 }
 
-Person.prototype = {
-  x: "inerited property",
-  talk: function(){ alert("I am " + this.name); }
+Zombie.prototype = {
+  talk: function(){ alert("brainzzz..."); }
 };
 
-var spongebob = new Person("spongebob"),
-    patrick = new Person("patrick");
+//      Zombie.prototype:
+//   -- { talk: function(){ alert("brainzzz..."); } }
+//  |                                             
+//  |
+//  |
+//   ---> zpongebob: {speed: 1.5}
+//  |   
+//   ---> vatrick: {speed: 1.5}
+
+var zpongebob = new Zombie(),
+    vatrick = new Zombie();
     
-spongebob.talk(); // "I am spongebob"
-patrick.talk(); // "I am patrick"
-
-patrick.x; // "inherited property"
+zpongebob.talk(); // "brainzzz..."
 ```
 
-```js
-//           ____________
-//          |            |
-//          | prototype  |
-//          |____________|
-//                |
-//           _____|_____ 
-//          /           \
-//         /             \
-//        |               |
-//   _____|_____     _____|_____
-//  |           |   |           |
-//  | spongebob |   |  patrick  |
-//  |___________|   |___________|
-```

@@ -34,7 +34,15 @@ function zombie(){
 var z = zombie.call({}); // {speed: 1.5}
 ```
 
-`zombie` is an example of a constructor. It is a function that is used to construct an object.
+`zombie` is an example of a constructor, a function that is used to construct an object. To create a visual distinction between a regular function and a constructor, it is a common practice to capitalize the first letter of a constructor.
+
+```js
+function Zombie(){
+  this.speed = 1.5;
+}
+
+var z = new Zombie();
+```
 
 ## Prototype
 

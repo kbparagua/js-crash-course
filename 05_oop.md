@@ -142,6 +142,13 @@ function Zombie(name){
 }
 
 Zombie.prototype = {
+  imPublic: function(){
+    alert("you can call me outside");
+    
+    // It is okay to access private property here.
+    this._imPrivate();
+  },
+  
   _imPrivate: function(){ alert("do not call me outside"); }
 };
 

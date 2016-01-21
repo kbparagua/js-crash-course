@@ -129,3 +129,22 @@ Zombie.prototype = {
 var zpongebob = new Zombie("zpongebob");
 zpongebob.talk(); // "I am zpongebob... brainzzz..."
 ```
+
+## Private Properties in Prototype
+
+There is no way to create a private properties in javascript. All properties inside the prototype are all accessible through the constructed objects.
+
+As a convention, programmers are using `_` underscore to prefix properties that are intended for private use.
+
+```js
+function Zombie(name){
+  this.name = name;
+}
+
+Zombie.prototype = {
+  _imPrivate: function(){ alert("do not call me outside"); }
+};
+
+var krabz = new Zombie("krabz");
+krabz._imPrivate(); // "do not call me outside"
+```

@@ -112,3 +112,20 @@ The constructed objects **DO NOT** copy the properties of the prototype, they wi
 // vatrick: Invoke `talk` method of my contructor's prototype.
 vatrick.talk();
 ```
+
+## Methods in Prototype
+
+When a method inside the prototype is called by a constructed object, `this` will be equal to the constructed object **NOT** the prototype.
+
+```js
+function Zombie(name){
+  this.name = name;
+}
+
+Zombie.prototype = {
+  talk: function(){ alert("I am " + this.name + "... brainzzz..."); }
+};
+
+var zpongebob = new Zombie("zpongebob");
+zpongebob.talk(); // "I am zpongebob... brainzzz..."
+```

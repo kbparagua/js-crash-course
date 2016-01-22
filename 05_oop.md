@@ -178,3 +178,9 @@ Zombie.prototype = {
 console.log( Zombie.prototype.constructor ); // function Zombie(){}
 console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 ```
+
+## The `__proto__` Property
+
+```js
+function Zombie(name){ this.name = name; }
+```

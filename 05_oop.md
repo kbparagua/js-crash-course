@@ -159,19 +159,17 @@ krabz._imPrivate(); // "do not call me outside"
 ## Relationship
 
 ```js
+//    _____________
+//   |zpongebob:   |
+//   |             |        __________________
+//   |  __proto__  |-----> |Zombie.prototype  | <--------------------
+//   |_____________|       |                  |      _____________   |
+//                         |  constructor     |---->|Zombie       |  |
+//                         |__________________|     |             |  |
+//                                                  |  prototype  |--
+//                                                  |_____________|
 function Zombie(){};
 Zombie.prototype = {};
 
 var zpongebob = new Zombie();
-
-//          _________________________
-//   ----> | Zombie => function(){}: |
-//  |   -- | prototype               |
-//  |  |   |_________________________|
-//  |  |                                  ____________
-//  |  |     ___________________         | zpongebob: |
-//  |   --> | Zombie.prototype: | <----- | __proto__  |
-//   ------ | constructor       |        |____________|
-//          |___________________|
-
 ```

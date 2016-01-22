@@ -156,20 +156,25 @@ var krabz = new Zombie("krabz");
 krabz._imPrivate(); // "do not call me outside"
 ```
 
-## Relationship
+## Prototype-Constructor Relationship
 
 ```js
-//    _____________
-//   |zpongebob:   |
-//   |             |        __________________
-//   |  __proto__  |-----> |Zombie.prototype  | <--------------------
-//   |_____________|       |                  |      _____________   |
-//                         |  constructor     |---->|Zombie       |  |
-//                         |__________________|     |             |  |
-//                                                  |  prototype  |--
-//                                                  |_____________|
-function Zombie(){};
-Zombie.prototype = {};
+//   _____________
+//  |Zombie:      | <------------------------------
+//  |             |       ____________________     |
+//  |  prototype  | ---> |Zombie.prototype:   |    |
+//  |_____________|      |                    |    |
+//                       |  constructor       | ---
+//                       |____________________|
 
-var zpongebob = new Zombie();
+function Zombie(){};
+
+Zombie.prototype = {
+  talk: function(){
+    alert("brainzzz...");
+  }
+};
+
+console.log( Zombie.prototype.constructor ); // function Zombie(){}
+console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 ```

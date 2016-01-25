@@ -209,3 +209,13 @@ Zombie.prototype = {
 
 var krabz = new Zombie("krabz");
 ```
+
+## Object.create
+
+```js
+var humanPrototype = {
+  hello: function(){ alert('hello'); } 
+};
+
+var goku = Object.create(humanPrototype, {name: "goku"});
+```

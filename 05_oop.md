@@ -183,4 +183,21 @@ console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 
 ```js
 function Zombie(name){ this.name = name; }
+
+var krabz = new Zombie("krabz");
+//       _________________
+//      |krabz:           |
+//      |                 |
+//      | name -> "krabz" |
+//   -- | __proto__       |
+//  |   |_________________|
+//  |                   
+//  |            
+//  |      _____________
+//   ---> |Zombie:      | <------------------------------
+//        |             |       ____________________     |
+//        |  prototype  | ---> |Zombie.prototype:   |    |
+//        |_____________|      |                    |    |
+//                             |  constructor       | ---
+//                             |____________________|
 ```

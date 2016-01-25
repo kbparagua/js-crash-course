@@ -181,23 +181,31 @@ console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 
 ## The `__proto__` Property
 
+`__proto__` is a property of a constructed object that references the prototype of the constructor.
+
 ```js
+//   _____________
+//  |Zombie:      | <----------------------------------------
+//  |             |              _______________________     |
+//  |  prototype  | ----------> |Zombie.prototype:      |    |
+//  |_____________|         --> |                       |    |
+//                         |    |  constructor          | ---
+//                         |    |  talk -> function(){} |
+//                         |    |_______________________|
+//   _________________     |
+//  |krabz:           |    |
+//  |                 |    |
+//  | name -> "krabz" |    |
+//  | __proto__       | ---
+//  |_________________|
+
 function Zombie(name){ this.name = name; }
 
+Zombie.prototype = {
+  talk: function(){
+    alert("brainzzz...");
+  }
+};
+
 var krabz = new Zombie("krabz");
-//       _________________
-//      |krabz:           |
-//      |                 |
-//      | name -> "krabz" |
-//   -- | __proto__       |
-//  |   |_________________|
-//  |                   
-//  |            
-//  |      _____________
-//   ---> |Zombie:      | <------------------------------
-//        |             |       ____________________     |
-//        |  prototype  | ---> |Zombie.prototype:   |    |
-//        |_____________|      |                    |    |
-//                             |  constructor       | ---
-//                             |____________________|
 ```

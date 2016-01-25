@@ -219,3 +219,30 @@ var humanPrototype = {
 
 var goku = Object.create(humanPrototype, {name: "goku"});
 ```
+
+## Inheritance
+
+```js
+function Human(name){
+  this.name = name;
+}
+
+Human.prototype.sayName = function(){
+  alert("I'm " + this.name);
+};
+
+function Programmer(name, language){
+  Human.call(this, name);
+  this.language = language;
+}
+
+Programmer.prototype = Object.create(Human.prototype);
+
+Programmer.prototype.work = function(){
+  alert("Code in " + this.language);
+};
+
+var francis = new Programmer("francis", "ruby");
+francis.sayName();
+francis.work();
+```

@@ -49,6 +49,22 @@ alert(child.inherited); // "Inherited Property"
 alert(child.__proto__); // {inherited: "Inherited Property"}
 ```
 
+### Prototype's methods
+
+When a method in the prototype is executed by a child object, `this` will refer to the child object and not to the prototype.
+
+```js
+var human = {
+  name: "anonymous",
+  talk: function(){ alert("I am " + this.name); }
+};
+
+var goku = Object.create(human);
+goku.name = "goku";
+
+goku.talk(); // "I am goku"
+```
+
 ## Constructor
 
 `new` is a special keyword used together with a function invocation to create an object.

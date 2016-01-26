@@ -145,26 +145,24 @@ alert(vatrick.__proto__ === Zombie.prototype); // true
 alert(Zombie.prototype); // {}
 ```
 
-## Private Properties in Prototype
+## Private Properties
 
-There is no way to create a private properties in javascript. All properties inside the prototype are all accessible through the constructed objects.
-
-As a convention, programmers are using `_` underscore to prefix properties that are intended for private use.
+Unlike other programming languages, there is no way to create private properties in javascript. As a workaround and also as a convention, programmers are using `_` underscore to prefix properties that are intended for private use.
 
 ```js
 function Zombie(name){
   this.name = name;
 }
 
-Zombie.prototype = {
-  imPublic: function(){
-    alert("you can call me outside");
+Zombie.prototype.imPublic = function(){
+  alert("you can call me outside");
     
-    // It is okay to access private property here.
-    this._imPrivate();
-  },
+  // It is okay to access private property here.
+  this._imPrivate();
+};
   
-  _imPrivate: function(){ alert("do not call me outside"); }
+Zombie.prototype._imPrivate = function(){ 
+  alert("do not call me outside");
 };
 
 var krabz = new Zombie("krabz");
@@ -194,48 +192,7 @@ console.log( Zombie.prototype.constructor ); // function Zombie(){}
 console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 ```
 
-## The `__proto__` Property
-
-`__proto__` is a property of a constructed object that references the prototype of the constructor.
-
-```js
-//   _____________
-//  |Zombie:      | <----------------------------------------
-//  |             |              _______________________     |
-//  |  prototype  | ----------> |Zombie.prototype:      |    |
-//  |_____________|         --> |                       |    |
-//                         |    |  constructor          | ---
-//                         |    |  talk -> function(){} |
-//                         |    |_______________________|
-//   _________________     |
-//  |krabz:           |    |
-//  |                 |    |
-//  | name -> "krabz" |    |
-//  | __proto__       | ---
-//  |_________________|
-
-function Zombie(name){ this.name = name; }
-
-Zombie.prototype = {
-  talk: function(){
-    alert("brainzzz...");
-  }
-};
-
-var krabz = new Zombie("krabz");
-```
-
-## Object.create
-
-```js
-var humanPrototype = {
-  hello: function(){ alert('hello'); } 
-};
-
-var goku = Object.create(humanPrototype, {name: "goku"});
-```
-
-## Inheritance
+## Class Inheritance
 
 ```js
 function Human(name){

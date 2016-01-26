@@ -2,36 +2,39 @@
 
 ## Inheritance
 
-An object can inherit properties from another object by using the `__proto__` property.
+An object can inherit from another object by assigning the other object to its `__proto__` property.
 
 ```js
 var human = {
   talk: function(){ alert("I am a human."); }
 };
 
-var programmer = {
-  work: function(){ alert("I will start coding."); }
-}
+var goku = {__proto__: human};
 
-// Assign human to be the __proto__ (prototype) of programmer.
-programmer.__proto__ = human;
+goku.talk(); // "I am a human."
+```
 
-programmer.work(); // "I will start coding."
-programmer.talk(); // "I am a human."
+The parent, `human`, is an example of a **prototype**. Basically, a prototype is an object that acts as a parent of other object/s. By default, an object has an empty object (w/ a `null` prototype) as its prototype.
+
+```js
+var goku = {name: "Goku"};
+
+console.log(goku.__proto__); // {}
+console.log(goku.__proto__.__proto__); // null
 ```
 
 The child object will **NOT** copy the properties of its prototype, it will just included them when searching for a property.
 
 ```js
-programmer.talk(); // "I am a human".
+goku.talk(); // "I am a human".
 
 // Behind the scenes:
 //
-// programmer: Searching `talk` in my property list.
-// programmer: I don't have a property `talk`.
-// programmer: Searching `talk` in my prototype.
-// programmer: I found it.
-// programmer: Invoke `talk` method of my prototype.
+// goku: Searching `talk` in my property list.
+// goku: I don't have a property `talk`.
+// goku: Searching `talk` in my prototype.
+// goku: I found it.
+// goku: Invoke `talk` method of my prototype.
 ```
 
 ### Object.create

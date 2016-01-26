@@ -1,5 +1,40 @@
 # 05: Object-Oriented Programming
 
+## Inheritance
+
+An object can inherit properties from another object by using the `__proto__` property.
+
+```js
+var human = {
+  talk: function(){ alert("I am a human."); }
+};
+
+var programmer = {
+  work: function(){ alert("I will start coding."); }
+}
+
+// Assign human to be the __proto__ (prototype) of programmer.
+programmer.__proto__ = human;
+
+programmer.work(); // "I will start coding."
+programmer.talk(); // "I am a human."
+```
+
+The child object will **NOT** copy the properties of its prototype, it will just included them when searching for a property.
+
+```js
+programmer.talk(); // "I am a human".
+
+// Behind the scenes:
+//
+// programmer: Searching `talk` in my property list.
+// programmer: I don't have a property `talk`.
+// programmer: Searching `talk` in my prototype.
+// programmer: I found it.
+// programmer: Invoke `talk` method of my prototype.
+```
+
+
 ## Constructor
 
 `new` is a special keyword used together with a function invocation to create an object.

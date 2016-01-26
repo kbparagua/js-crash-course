@@ -34,6 +34,20 @@ programmer.talk(); // "I am a human".
 // programmer: Invoke `talk` method of my prototype.
 ```
 
+### Object.create
+
+`Object.create` can also be used to create an object with the specified prototype.
+
+```js
+var parent = {inherited: "Inherited Property"};
+
+// Create an object with parent as the prototype
+var child = Object.create(parent);
+child.own = "Own Property";
+
+alert(child.inherited); // "Inherited Property"
+alert(child.__proto__); // {inherited: "Inherited Property"}
+```
 
 ## Constructor
 

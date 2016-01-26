@@ -105,85 +105,16 @@ var z = zombie.call({}); // {speed: 1.5}
 Most of the time, constructor is not in verb form, rather they are in noun form which represents the type or class of object that they are constructing. Also, as a convention and to make them appear different from a regular function, they are written with a capitalized first letter.
 
 ```js
-function Zombie(){
-  this.speed = 1.5;
+function Zombie(name){
+  this.name = name;
 }
 
-var z = new Zombie();
+var zpongebob = new Zombie("zpongebob");
 ```
 
-## Prototype
+## Constructor's Prototype
 
-Prototype is an object and a property of the constructor in which all constructed objects will inherit to. By default, it is an empty object.
-
-```js
-function Zombie(){
-  this.speed = 1.5;
-}
-
-Zombie.prototype = {
-  talk: function(){ alert("brainzzz..."); }
-};
-
-//      Zombie.prototype:
-//   -- { talk: function(){ alert("brainzzz..."); } }
-//  |                                             
-//  |
-//  |
-//   ---> zpongebob: {speed: 1.5}
-//  |   
-//   ---> vatrick: {speed: 1.5}
-
-var zpongebob = new Zombie(),
-    vatrick = new Zombie();
-    
-zpongebob.talk(); // "brainzzz..."
-```
-
-It is a common practice to put common properties on the constructor's prototype.
-
-```js
-function Zombie(){}
-
-Zombie.prototype = {
-  speed: 1.5,
-  talk: function(){ alert("brainzzz..."); }
-};
-
-//   -- Zombie.prototype:
-//  |   { 
-//  |     speed: 1.5,
-//  |     talk: function(){ alert("brainzzz..."); }
-//  |   }
-//  |                                             
-//  |
-//  |
-//   ---> zpongebob: {}
-//  |   
-//   ---> vatrick: {}
-
-var zpongebob = new Zombie(),
-    vatrick = new Zombie();
-    
-zpongebob.talk(); // "brainzzz..."
-
-alert( vatrick.speed ); // 1.5
-```
-
-The constructed objects **DO NOT** copy the properties of the prototype, they will just search their constructor's prototype when an unknown key is accessed.
-
-```js
-// vatrick: Searching `talk` in my property list.
-// vatrick: I don't have a property `talk`.
-// vatrick: Searching `talk` in my constructor's prototype.
-// vatrick: I found it.
-// vatrick: Invoke `talk` method of my contructor's prototype.
-vatrick.talk();
-```
-
-## Methods in Prototype
-
-When a method inside the prototype is called by a constructed object, `this` will be equal to the constructed object **NOT** the prototype.
+It is also possible to assign a prototype to all constructed objects by using the constructor's `prototype` property.
 
 ```js
 function Zombie(name){
@@ -191,11 +122,27 @@ function Zombie(name){
 }
 
 Zombie.prototype = {
-  talk: function(){ alert("I am " + this.name + "... brainzzz..."); }
+  talk: function(){
+    alert("brainzzz...");
+  }
 };
 
 var zpongebob = new Zombie("zpongebob");
-zpongebob.talk(); // "I am zpongebob... brainzzz..."
+
+zpongebob.talk(); // "brainzzz..."
+alert(zpongebob.__proto__ === Zombie.prototype); // true
+```
+
+By default, constructor's prototype is an empty object.
+
+```js
+function Zombie(name){
+  this.name = name;
+}
+
+var vatrick = new Zombie("vatrick");
+alert(vatrick.__proto__ === Zombie.prototype); // true
+alert(Zombie.prototype); // {}
 ```
 
 ## Private Properties in Prototype

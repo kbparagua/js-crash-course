@@ -51,7 +51,7 @@ Basically, anything that can be assigned to a variable can also be a property va
 
 ## Accessing Properties
 
-We use the dot operator (`.`) to access properties. 
+Dot operator (`.`) is used to access properties. 
 
 ```js
 var bruce = {firstname: "Bruce", lastname: "Lee"};
@@ -116,16 +116,19 @@ If the passed expression does not result to a string, it will be typecasted to a
 
 ```js
 var obj = {"100": "One Hundred"};
+
+// typcasted:
+//   alert(obj["100"]);
 alert(obj[50 + 50]); // "One Hundred"
 ```
 
 ## Object as Argument
 
-When an object is created, javascript returns a reference instead of the object itself. Meaning, when dealing with an object, we are really talking to a reference rather than talking directly to the object itself.
+When an object is created, javascript returns a reference instead of the object itself. Meaning, when dealing with an object, we are really talking to a reference rather than the object itself.
 
 ```js
-// [reference:001] -> {myKey: "value"}
-// myObject -> [reference:001]
+// [reference:01] -> {myKey: "value"}
+// myObject -> [reference:01]
 
 var myObject = {myKey: "value"};
 ```
@@ -134,15 +137,16 @@ When an object is passed as an argument, a reference of it is actually passed. S
 
 ```js
 function changeMe(object){
-  // object -> <reference:01> => {x: "unchanged"}
+  // object --> [reference:01] => {x: "unchanged"}
   object.x = "changed";
-  // object -> <reference:01> => {x: "changed"}
+  // object --> [reference:01] => {x: "changed"}
 }
 
 var obj = {x: "unchanged"};
-// obj --> <reference:01> => {x: "unchanged"}
+// obj --> [reference:01] => {x: "unchanged"}
 
 changeMe(obj);
+// obj --> [reference:01] => {x: "changed"}
 
 alert(obj.x); // "changed"
 ```
@@ -151,13 +155,13 @@ But assigning the argument to a different object/reference will not affect the o
 
 ```js
 function changeMe(object){
-  // object --> <reference:01> => {x: "unchanged"}
+  // object --> [reference:01] => {x: "unchanged"}
   object = {x: "changed"};
-  // object --> <reference:02> => {x: "changed"}
+  // object --> [reference:02] => {x: "changed"}
 }
 
 var obj = {x: "unchanged"};
-// obj --> <reference:01> => {x: "unchanged"}
+// obj --> [reference:01] => {x: "unchanged"}
 
 changeMe(obj);
 
@@ -232,7 +236,7 @@ function foo(){};
 window.foo = function(){};
 ```
 
-Any function **NOT** invoked by any object is considered to be invoked by the global object. Meaning, the value of `this` will be the global object, if a function is not invoked by any object.
+Any function **NOT** invoked by any object is considered to be invoked by the global object. Meaning, the value of `this` will be the global object if a function is not invoked by any object.
 
 ```js
 function foo(){
@@ -242,6 +246,21 @@ function foo(){
 // Both statements will have the same output.
 foo(); // window
 window.foo(); // window
+```
+
+## Global `this`
+
+In the global scope, `this` refers to the global object.
+
+```js
+var theGlobalObject = this;
+
+function foo(){
+  alert(theGlobalObject === this);
+}
+
+alert(theGlobalObject === window); // true
+foo(); // true
 ```
 
 ## Changing This

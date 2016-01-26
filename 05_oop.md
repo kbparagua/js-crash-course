@@ -70,17 +70,17 @@ goku.talk(); // "I am goku"
 
 ## Constructor
 
-`new` is a special keyword used together with a function invocation to create an object.
+A Constructor is just a regular function that is used together with the keyword `new` to construct a new object.
 
 ```js
-function regularFunction(){
-  // do something here
+function myFunction(){
+  // Do something here
 }
 
-var obj = new regularFunction(); // {}
+var obj = new myFunction; // {}
 ```
 
-If a function is invoked with `new`, it will be interpreted as if a new empty object invoked it, and will also return that new object.
+When an constructor is used together with `new`, it will be interpreted as if a new empty object invoked it, and will also return that new object.
 
 ```js
 function zombie(){
@@ -102,7 +102,7 @@ function zombie(){
 var z = zombie.call({}); // {speed: 1.5}
 ```
 
-`zombie` is an example of a constructor, a function that is used to construct an object. To create a visual distinction between a regular function and a constructor, it is a common practice to capitalize the first letter of a constructor.
+Most of the time, constructor is not in verb form, rather they are in noun form which represents the type or class of object that they are constructing. Also, as a convention and to make them appear different from a regular function, they are written with a capitalized first letter.
 
 ```js
 function Zombie(){

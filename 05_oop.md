@@ -50,7 +50,7 @@ goku.talk(); // "hello"
 alert(goku.name); // "Goku"
 ```
 
-The child object did **NOT** copy the properties of its ancestors.
+The child object will **NOT** copy the properties of its ancestors.
 
 ### Object.create
 

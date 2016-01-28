@@ -217,6 +217,26 @@ Programmer.prototype.work = function(){
 };
 
 var francis = new Programmer("francis", "ruby");
-francis.sayName();
-francis.work();
+
+francis.sayName(); // "I'm francis"
+francis.work(); // "Code in ruby"
+
+// francis.__proto__ --> Programmer.prototype --> Human.prototype --> {}.prototype --> null
 ```
+
+
+## Prototype Chain
+
+
+## Checking Object Class
+
+Use `instanceof` operator to check if an object is an instance of a specific class or created by a specific constructor.
+
+```js
+function Zombie(name){ this.name = name; }
+
+var zpongebob = new Zombie('zpongebob');
+
+alert(zpongebob instanceof Zombie); // true
+```
+

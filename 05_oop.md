@@ -171,6 +171,8 @@ krabz._imPrivate(); // "do not call me outside"
 
 ## Prototype-Constructor Relationship
 
+A constructor's prototype will have a `constructor` property. Both the constructor and the prototype has a reference to each other.
+
 ```js
 //   _____________
 //  |Zombie:      | <------------------------------

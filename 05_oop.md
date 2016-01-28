@@ -27,21 +27,30 @@ console.log(goku.__proto__); // {}
 console.log(goku.__proto__.__proto__); // null
 ```
 
-### Property Lookup
+### Prototype Chain
 
-The child object will **NOT** copy the properties of its prototype, it will just included them when searching for a property.
+When a property is accessed in an object, it will search its own properties and will also include the properties of its whole prototype chain.
 
 ```js
-goku.talk(); // "I am a human".
+var creature = {alive: true};
+var human = { talk: function(){ alert("hello"); } };
+var goku = {name: 'Goku');
 
-// Behind the scenes:
-//
-// goku: Searching `talk` in my property list.
-// goku: I don't have a property `talk`.
-// goku: Searching `talk` in my prototype.
-// goku: I found it.
-// goku: Invoke `talk` method of my prototype.
+human.__proto__ = creature;
+goku.__proto__ = human;
+
+// Prototype Chain:
+//  goku.__proto__ --> human
+//  human.__proto__ --> creature
+//  creature.__proto__ --> {}
+//  {}.__proto__ --> null
+
+alert(goku.alive); // true
+goku.talk(); // "hello"
+alert(goku.name); // "Goku"
 ```
+
+The child object did **NOT** copy the properties of its ancestors.
 
 ### Object.create
 
@@ -229,10 +238,6 @@ francis.work(); // "Code in ruby"
 
 // francis.__proto__ --> Programmer.prototype --> Human.prototype --> {}.prototype --> null
 ```
-
-
-## Prototype Chain
-
 
 ## Checking Object Class
 

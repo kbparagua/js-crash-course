@@ -225,6 +225,7 @@ function Programmer(name, language){
   this.language = language;
 }
 
+// Create an empty object that inherites from Human.prototype
 Programmer.prototype = Object.create(Human.prototype);
 
 Programmer.prototype.work = function(){
@@ -236,7 +237,11 @@ var francis = new Programmer("francis", "ruby");
 francis.sayName(); // "I'm francis"
 francis.work(); // "Code in ruby"
 
-// francis.__proto__ --> Programmer.prototype --> Human.prototype --> {}.prototype --> null
+// Prototype Chain:
+//  francis.__proto__ --> Programmer.prototype
+//  Programmer.prototype.__proto__ --> Human.prototype
+//  Human.prototype.__proto__ --> {}
+//  {}.__proto__ --> null
 ```
 
 ## Checking Object Class

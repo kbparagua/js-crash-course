@@ -14,7 +14,11 @@ var goku = {__proto__: human};
 goku.talk(); // "I am a human."
 ```
 
-The parent, `human`, is an example of a **prototype**. Basically, a prototype is an object that acts as a parent of other object/s. By default, an object has an empty object (w/ a `null` prototype) as its prototype.
+The parent, `human`, is an example of a **prototype**. Basically, a prototype is an object that acts as a parent of other object/s. 
+
+### Default Prototype
+
+By default, an object has an empty object (w/ a `null` prototype) as its prototype.
 
 ```js
 var goku = {name: "Goku"};
@@ -22,6 +26,8 @@ var goku = {name: "Goku"};
 console.log(goku.__proto__); // {}
 console.log(goku.__proto__.__proto__); // null
 ```
+
+### Property Lookup
 
 The child object will **NOT** copy the properties of its prototype, it will just included them when searching for a property.
 

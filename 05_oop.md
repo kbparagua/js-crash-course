@@ -209,6 +209,39 @@ console.log( Zombie.prototype.constructor ); // function Zombie(){}
 console.log( Zombie.prototype ); // {talk: function(){}, constructor: Zombie}
 ```
 
+
+## Checking Object Class
+
+Use `instanceof` operator to check if an object is an instance of a specific class or created by a specific constructor.
+
+```js
+function Zombie(name){ this.name = name; }
+
+var zpongebob = new Zombie('zpongebob');
+
+alert(zpongebob instanceof Zombie); // true
+```
+
+`instanceof` will check if the constructor's prototype property is in the object's prototype chain.
+
+```js
+function Human(){}
+function Zombie(name){ this.name = name; }
+
+// Zombie.prototype inherits Human.prototype
+Zombie.prototype.__proto__ = Human.prototype;
+
+var zpongebob = new Zombie('zpongebob');
+
+// Prototype Chain:
+//  zpongebob.__proto__ --> Zombie.prototype
+//  Zombie.prototype.__proto__ --> Human.prototype
+//  Human.prototype.__proto__ --> {}
+//  {}.__proto__ --> null
+
+alert(zpongebob instanceof Human); // true
+```
+
 ## Class Inheritance
 
 ```js
@@ -242,17 +275,5 @@ francis.work(); // "Code in ruby"
 //  Programmer.prototype.__proto__ --> Human.prototype
 //  Human.prototype.__proto__ --> {}
 //  {}.__proto__ --> null
-```
-
-## Checking Object Class
-
-Use `instanceof` operator to check if an object is an instance of a specific class or created by a specific constructor.
-
-```js
-function Zombie(name){ this.name = name; }
-
-var zpongebob = new Zombie('zpongebob');
-
-alert(zpongebob instanceof Zombie); // true
 ```
 

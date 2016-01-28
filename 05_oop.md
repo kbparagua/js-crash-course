@@ -98,23 +98,23 @@ var obj = new myFunction; // {}
 When an constructor is used together with `new`, it will be interpreted as if a new empty object invoked it, and will also return that new object.
 
 ```js
-function zombie(){
-  this.speed = 1.5;
+function zombie(name){
+  this.name = name;
 }
 
-var z = new zombie(); // {speed: 1.5}
+var zpongebob = new zombie("zpongebob"); // {name: "zpongebob"}
 ```
 
 The code above can be interpreted like:
 
 ```js
-function zombie(){
-  this.speed = 1.5;
+function zombie(name){
+  this.name = name;
   return this;
 }
 
 // invoke zombie in context of a new empty object
-var z = zombie.call({}); // {speed: 1.5}
+var zpongebob = zombie.call({}, "zpongebob"); // {name: "zpongebob"}
 ```
 
 Most of the time, constructor is not in verb form, rather they are in noun form which represents the type or class of object that they are constructing. Also, as a convention and to make them appear different from a regular function, they are written with a capitalized first letter.

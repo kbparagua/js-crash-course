@@ -1,6 +1,55 @@
 # 06: Exercises
 
 1. What's the output?
+  
+  ```js
+  function wazeng(arg){
+    arg.foo = function(){ alert("BAR"); };
+    return arg;
+  }
+  
+  var obj = {};
+  obj["foo"] = function prettyFunction(){ alert("foo"); };
+  
+  var test = wazeng(obj);
+  
+  test.foo();
+  obj.foo();
+  ```
+  
+1. What's the output?
+
+  ```js
+  var name = "My Test Application";
+  
+  function Human(){};
+  
+  function Zombie(name){
+    function init(){ 
+      this.name = name;
+      
+      this.whenHumanDetected = function(){
+        alert("brainzzz!!!!");
+      };
+    }
+    
+    init();
+  }
+  
+  Zombie.prototype.encountered = function(object){
+    if (object instanceof Human){
+      alert(this.name + " encountered a human!");
+      this.whenHumanDetected();
+    }
+  }
+  
+  var francis = new Human();
+  var vatrick = new Zombie('vatrick');
+  
+  vatrick.encountered(francis);
+  ```
+
+1. What's the output?
 
   ```js
   function Human(name){

@@ -20,7 +20,11 @@
 1. What's the output?
 
   ```js
-  var name = "My Test Application";
+  (function myApp(){
+    this.name = "My Test Application";
+    this.version = "1.0.0";
+    this.env = "development";
+  })();
   
   function Human(){};
   

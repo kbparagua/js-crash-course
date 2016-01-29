@@ -260,6 +260,7 @@ function Programmer(name, language){
 
 // Create an empty object that inherites from Human.prototype
 Programmer.prototype = Object.create(Human.prototype);
+Programmer.prototype.constructor = Programmer;
 
 Programmer.prototype.work = function(){
   alert("Code in " + this.language);

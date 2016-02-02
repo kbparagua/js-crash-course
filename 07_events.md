@@ -1,5 +1,16 @@
 # 07: Events
 
+## Listeners
+
+```js
+var el = document.getElementById('test');
+
+function listener(event){
+  // do something
+}
+
+el.addEventListener('click', listener, false);
+```
 
 ## Propagation Cycle
 

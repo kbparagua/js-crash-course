@@ -39,3 +39,29 @@ el.addEventListener('click', listener, false);
   1. `element_3`
   1. `element_2`
   1. `element_1`
+
+
+## Stop Propagation
+
+```html
+<div id="outer">
+  <div id="inner">
+  </div>
+</div>
+```
+
+```js
+var outer = document.getElementById('outer'),
+    inner = document.getElementById('inner');
+  
+outer.addListener('click', function(e){
+  alert('outer clicked');
+}, false);
+
+inner.addListener('click', function(e){
+  alert('inner clicked');
+  e.stopPropagation();
+}, false);
+```
+
+`outer`'s click listener will not execute when `inner` is clicked.

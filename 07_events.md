@@ -287,3 +287,21 @@ When `inner` element is clicked:
 inner (propagation will stop, but will still execute the other listener)
 inner 2
 ```
+
+## Removing Event Listener
+
+To remove an event listener, the same arguments used during adding it should be passed again to the method `removeEventListener`.
+
+```js
+var listener = function(e){ console.log('triggered'); };
+
+el.addEventListener('click', listener, true);
+el.removeEventListener('click', listener, true);
+```
+
+Passing a copy of the added listener will not work, the same exact listener object should be passed.
+
+```js
+el.addEventListener('click', function(e){ console.log('click'); });
+el.removeEventListener('click', function(e){ console.log('click'); }); // will not remove the original listener.
+```

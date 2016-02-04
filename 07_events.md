@@ -125,6 +125,17 @@ When an event is triggered, the event will undergo 2 phases, which are capture a
   1. `element_2`
   1. `element_1`
 
+When adding a listener you can only choose to execute it on capture phase or bubble phase, but not both.
+
+### Capture Phase
+
+By default, all listeners will execute on bubble phase. To execute a listener on capture phase, you need to pass `true` as the last argument of `addEventListener`.
+
+```js
+el.addEventListener('click', function(e){
+  console.log("I will execute on capture phase");
+}, true);
+```
 
 ## Stop Propagation
 

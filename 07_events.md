@@ -39,6 +39,25 @@ clicked - 2nd
 clicked - 3rd
 ```
 
+## Preventing Browser's Default Action
+
+```html
+<a href="http://www.google.com" id="my-link">Google</a>
+```
+
+In order to prevent the browser's default action, we just need to invoke the `preventDefault` method of the event object.
+
+```js
+var link = document.getElementById('my-link');
+
+link.on('click', function(event){
+  
+  // Prevent browser from visiting the link's href value.
+  event.preventDefault();
+
+}, false);
+```
+
 ## Propagation Cycle
 
 1. During the capture phase, the farthest ancestor will be visited first, down to the target element.

@@ -1,12 +1,12 @@
 # 07: Events
 
-## Adding Element Listener
+## Adding Event Listener
+
+An event listener can be registered to an element by using the `addEventListener` method.
 
 ```html
 <a href="#" id="test">Click Me!</a>
 ```
-
-A listener can be registered to an element by using the `addEventListener` method.
 
 ```js
 var el = document.getElementById('test');
@@ -41,17 +41,18 @@ clicked - 2nd
 clicked - 3rd
 ```
 
-## The Event Object
+## Event Object
 
-When a listener is executed, an event object is passed to it, which contains details of the triggered event. Event properties may vary depending on the event type.
+When a listener is executed, an event object is passed to it, which contains details of the triggered event.
 
 ```js
-el. addEventListener('click', function(event){
-  
+el.addEventListener('click', function(event){
   // Access the coordinate where the event is triggered.
   event.clientX;
   event.clientY;
   
+  // The element that triggered the event.
+  event.target;
 });
 ```
 
@@ -76,7 +77,7 @@ link.on('click', function(event){
 
 ## Preventing Other Listeners Execution
 
-Inside a listener, you can stop the next listeners from executing by invoking the event object method `stopImmediatePropagation()`.
+Inside a listener, you can stop the next listeners from executing by invoking the event object method `stopImmediatePropagation`.
 
 ```js
 el.addEventListener('click', function(e){ console.log('clicked - 1st'); });
@@ -163,9 +164,42 @@ When an event is triggered, the event will undergo 2 phases, capture and bubble 
 
 When adding a listener you can only choose to execute it on capture phase or bubble phase, but not both.
 
+
 ### Capture Phase
 
 By default, all listeners will execute on bubble phase. To execute a listener on capture phase, you need to pass `true` as the 3rd argument of `addEventListener`.
+
+```html
+<div id="a">
+  <div id="b">
+    <div id="c">
+      <div id="d">
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+```js
+var a = document.getElementById('a'),
+    b = document.getElementById('b'),
+    c = document.getElementById('c'),
+    d = document.getElementById('d');
+
+a.addEventListener('click', function(e){ console.log('a'); }, true);
+b.addEventListener('click', function(e){ console.log('b'); });
+c.addEventListener('click', function(e){ console.log('c'); }, true);
+d.addEventListener('click', function(e){ console.log('d'); });
+```
+
+When the inner-most child is clicked, `d`, output will be:
+
+```
+a (capture phase)
+c (capture phase)
+d (bubble phase)
+b (bubble phase)
+```
 
 ## Stop Propagation
 

@@ -97,6 +97,8 @@ clicked - 2nd
 
 ## Propagation Cycle
 
+When an event is triggered, the event will undergo 2 phases, which are capture and bubble phase.
+
 1. During the capture phase, the farthest ancestor will be visited first, down to the target element.
 2. During the bubble phase, the target element will be visited first, up to the farthest ancestor.
 

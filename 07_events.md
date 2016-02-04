@@ -56,6 +56,16 @@ el.addEventListener('click', function(event){
 });
 ```
 
+## `this` Value
+
+When a listener is executed `this` will refer to the element object where it is attached.
+
+```js
+element.addEventListener('click', function(event){
+  console.log(this === element); // true
+});
+```
+
 ## Preventing Browser's Default Action
 
 ```html

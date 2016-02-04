@@ -201,27 +201,36 @@ d (bubble phase)
 b (bubble phase)
 ```
 
-## Stop Propagation
+## Stopping Propagation
 
-```html
-<div id="outer">
-  <div id="inner">
-  </div>
-</div>
-```
+In order to stop propagation of event, either on capture or bubble phase, simply invoke the `stopPropagation` method of the event object.
 
 ```js
-var outer = document.getElementById('outer'),
-    inner = document.getElementById('inner');
-  
-outer.addListener('click', function(e){
-  alert('outer clicked');
-}, false);
+a.addEventListener('click', function(e){ console.log('a'); });
 
-inner.addListener('click', function(e){
-  alert('inner clicked');
+b.addEventListener('click', function(e){ 
   e.stopPropagation();
-}, false);
+  console.log('b'); 
+});
+
+c.addEventListener('click', function(e){ console.log('c'); });
+d.addEventListener('click', function(e){ console.log('d'); });
 ```
 
-`outer`'s click listener will not execute when `inner` is clicked.
+When `d` element is clicked:
+
+```
+d
+c
+b // propagation stopped
+```
+
+When `c` element is clicked:
+
+```
+c
+b // propagation stopped
+```
+
+**NOTE:**
+`stopImmediatePropagation` can also be used to stop the propagation, just keep in mind that besides stopping propagation, it will also prevent other listeners of that element from executing.

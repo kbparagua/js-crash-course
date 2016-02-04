@@ -2,14 +2,41 @@
 
 ## Listeners
 
+```html
+<a href="#" id="test">Click Me!</a>
+```
+
+A listener can be registered to an element by using the `addEventListener` method.
+
 ```js
 var el = document.getElementById('test');
 
-function listener(event){
-  // do something
-}
+function listener(event){ alert("clicked."); }
 
 el.addEventListener('click', listener, false);
+```
+
+Syntax:
+```js
+element.addEventListener(event, listener, triggerOnCapturePhase);
+```
+
+## Multiple Listeners
+
+```js
+var el = document.getElementById('test');
+
+el.addEventListener('click', function(e){ console.log('clicked - 1st'); }, false);
+el.addEventListener('click', function(e){ console.log('clicked - 2nd'); }, false);
+el.addEventListener('click', function(e){ console.log('clicked - 3rd'); }, false);
+```
+
+When an element has multiple listeners, they will be triggered in order which they are added. In this case the output when the element is clicked is:
+
+```
+clicked - 1st
+clicked - 2nd
+clicked - 3rd
 ```
 
 ## Propagation Cycle

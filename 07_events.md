@@ -97,6 +97,40 @@ clicked - 1st
 clicked - 2nd
 ```
 
+## Propagation
+
+When a event is triggered, that same event will also be triggered on the ancestors of the target element.
+
+```html
+<div id="parent">
+  <div id="child"></div>
+</div>
+```
+
+```js
+var parent = document.getElementById('parent'),
+    child = document.getElementById('child');
+  
+child.addEventListener('click', function(e){
+  console.log('child is clicked');
+});
+
+parent.addEventListener('click', function(e){
+  console.log('parent is clicked');
+});
+```
+
+When child element is clicked:
+```
+child is clicked
+parent is clicked
+```
+
+When parent element is clicked:
+```
+parent is clicked
+```
+
 ## Propagation Cycle
 
 When an event is triggered, the event will undergo 2 phases, which are capture and bubble phase.
@@ -131,13 +165,7 @@ When adding a listener you can only choose to execute it on capture phase or bub
 
 ### Capture Phase
 
-By default, all listeners will execute on bubble phase. To execute a listener on capture phase, you need to pass `true` as the last argument of `addEventListener`.
-
-```js
-el.addEventListener('click', function(e){
-  console.log("I will execute on capture phase");
-}, true);
-```
+By default, all listeners will execute on bubble phase. To execute a listener on capture phase, you need to pass `true` as the 3rd argument of `addEventListener`.
 
 ## Stop Propagation
 

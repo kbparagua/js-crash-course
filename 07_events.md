@@ -13,7 +13,7 @@ var el = document.getElementById('test');
 
 function listener(event){ alert("clicked."); }
 
-el.addEventListener('click', listener, false);
+el.addEventListener('click', listener);
 ```
 
 Syntax:
@@ -21,14 +21,16 @@ Syntax:
 element.addEventListener(event, listener, triggerOnCapturePhase);
 ```
 
+(*`triggerOnCapturePhase` argument will be discussed later.*)
+
 ### Multiple Listeners
 
 ```js
 var el = document.getElementById('test');
 
-el.addEventListener('click', function(e){ console.log('clicked - 1st'); }, false);
-el.addEventListener('click', function(e){ console.log('clicked - 2nd'); }, false);
-el.addEventListener('click', function(e){ console.log('clicked - 3rd'); }, false);
+el.addEventListener('click', function(e){ console.log('clicked - 1st'); });
+el.addEventListener('click', function(e){ console.log('clicked - 2nd'); });
+el.addEventListener('click', function(e){ console.log('clicked - 3rd'); });
 ```
 
 When an element has multiple listeners, they will be triggered in order which they are added. In this case the output when the element is clicked is:
@@ -50,7 +52,7 @@ el. addEventListener('click', function(event){
   event.clientX;
   event.clientY;
   
-}, false);
+});
 ```
 
 ## Preventing Browser's Default Action
@@ -69,7 +71,7 @@ link.on('click', function(event){
   // Prevent browser from visiting the link's href value.
   event.preventDefault();
 
-}, false);
+});
 ```
 
 ## Preventing Other Listeners Execution
@@ -77,15 +79,15 @@ link.on('click', function(event){
 Inside a listener, you can stop the next listeners from executing by invoking the event object method `stopImmediatePropagation()`.
 
 ```js
-el.addEventListener('click', function(e){ console.log('clicked - 1st'); }, false);
+el.addEventListener('click', function(e){ console.log('clicked - 1st'); });
 
 el.addEventListener('click', function(e){
   // Prevent next listeners from executing
   e.stopImmediatePropagation();
   console.log('clicked - 2nd');
-}, false);
+});
 
-el.addEventListener('click', function(e){ console.log('clicked - 3rd'); }, false);
+el.addEventListener('click', function(e){ console.log('clicked - 3rd'); });
 ```
 
 When element is clicked, only the 1st and 2nd listeners will be executed.

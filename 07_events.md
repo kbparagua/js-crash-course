@@ -1,6 +1,6 @@
 # 07: Events
 
-## Listeners
+## Adding Element Listener
 
 ```html
 <a href="#" id="test">Click Me!</a>
@@ -21,7 +21,7 @@ Syntax:
 element.addEventListener(event, listener, triggerOnCapturePhase);
 ```
 
-## Multiple Listeners
+### Multiple Listeners
 
 ```js
 var el = document.getElementById('test');
@@ -37,6 +37,20 @@ When an element has multiple listeners, they will be triggered in order which th
 clicked - 1st
 clicked - 2nd
 clicked - 3rd
+```
+
+## The Event Object
+
+When a listener is executed, an event object is passed to it, which contains details of the triggered event. Event properties may vary depending on the event type.
+
+```js
+el. addEventListener('click', function(event){
+  
+  // Access the coordinate where the event is triggered.
+  event.clientX;
+  event.clientY;
+  
+}, false);
 ```
 
 ## Preventing Browser's Default Action

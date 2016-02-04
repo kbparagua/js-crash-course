@@ -72,6 +72,29 @@ link.on('click', function(event){
 }, false);
 ```
 
+## Preventing Other Listeners Execution
+
+Inside a listener, you can stop the next listeners from executing by invoking the event object method `stopImmediatePropagation()`.
+
+```js
+el.addEventListener('click', function(e){ console.log('clicked - 1st'); }, false);
+
+el.addEventListener('click', function(e){
+  // Prevent next listeners from executing
+  e.stopImmediatePropagation();
+  console.log('clicked - 2nd');
+}, false);
+
+el.addEventListener('click', function(e){ console.log('clicked - 3rd'); }, false);
+```
+
+When element is clicked, only the 1st and 2nd listeners will be executed.
+
+```
+clicked - 1st
+clicked - 2nd
+```
+
 ## Propagation Cycle
 
 1. During the capture phase, the farthest ancestor will be visited first, down to the target element.
